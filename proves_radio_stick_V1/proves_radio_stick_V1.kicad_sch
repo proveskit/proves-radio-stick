@@ -5,201 +5,6 @@
 	(uuid "c64c0d72-a9f6-4f3a-891e-1f647558f538")
 	(paper "A3")
 	(lib_symbols
-		(symbol "AZ1117CH-3.3TRG1:AZ1117CH-3.3TRG1"
-			(pin_names
-				(offset 0.762)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "IC"
-				(at 29.21 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "AZ1117CH-3.3TRG1"
-				(at 29.21 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "SOT230P700X180-4N"
-				(at 29.21 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA25/1776204.pdf"
-				(at 29.21 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Description" "1.35A 3.3V LDO Reg. Current Limit SOT223 DiodesZetex AZ1117CH-3.3TRG1, LDO Voltage Regulator, 0.8A, 3.3 V +/-1%, maximum of 15 Vin, 3-Pin SOT-223"
-				(at 29.21 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Height" "1.8"
-				(at 29.21 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Mouser Part Number" "621-AZ1117CH-3.3TRG1"
-				(at 29.21 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/AZ1117CH-3.3TRG1?qs=FKu9oBikfSm7ntaG6olPSQ%3D%3D"
-				(at 29.21 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Name" "Diodes Inc."
-				(at 29.21 -12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Part_Number" "AZ1117CH-3.3TRG1"
-				(at 29.21 -15.24 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(symbol "AZ1117CH-3.3TRG1_0_0"
-				(pin passive line
-					(at 0 0 0)
-					(length 5.08)
-					(name "ADJ/GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "OUTPUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 0)
-					(length 5.08)
-					(name "INPUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 33.02 0 180)
-					(length 5.08)
-					(name "VOUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "AZ1117CH-3.3TRG1_0_1"
-				(polyline
-					(pts
-						(xy 5.08 2.54) (xy 27.94 2.54) (xy 27.94 -7.62) (xy 5.08 -7.62) (xy 5.08 2.54)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Adafruit ItsyBitsy RP2040-eagle-import:+3V3"
 			(power)
 			(exclude_from_sim no)
@@ -4374,196 +4179,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Switch:SW_Push_SPDT"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "SW"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SW_Push_SPDT"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Momentary Switch, single pole double throw"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SW_Push_SPDT_0_0"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.016) (xy 0 3.048)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 -2.54)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SW_Push_SPDT_0_1"
-				(polyline
-					(pts
-						(xy -1.524 0.2032) (xy 2.3368 1.9812)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 2.54)
-					(radius 0.508)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SW_Push_SPDT_1_1"
-				(rectangle
-					(start -3.175 3.81)
-					(end 3.175 -3.81)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "easyeda2kicad:E22-400M30S"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6167,28 +5782,6 @@
 		)
 		(uuid 742fe4fc-8ab6-443e-814f-1bb89e5c9db7)
 	)
-	(text "3v3 Linear Regulator"
-		(exclude_from_sim no)
-		(at 154.94 186.69 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "2caea3ef-669d-49aa-8d4b-54325293447f")
-	)
-	(text "For USB Power\n"
-		(exclude_from_sim no)
-		(at 158.75 189.23 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6ea33e72-989a-4251-b367-7951db7ff2f7")
-	)
 	(text "RESET"
 		(exclude_from_sim no)
 		(at 218.44 196.85 0)
@@ -6457,12 +6050,6 @@
 		(uuid "7cc539a7-b526-4a14-a81d-3a3781f8e7c4")
 	)
 	(junction
-		(at 182.88 220.98)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7ff5138e-5b54-470e-a430-3d079d4f3812")
-	)
-	(junction
 		(at 273.05 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6497,12 +6084,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "98833cd8-54bb-44eb-b890-110c34dbb8f3")
-	)
-	(junction
-		(at 144.018 226.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a174a60b-b20b-4285-8da0-6104d3521471")
 	)
 	(junction
 		(at 228.6 224.79)
@@ -6583,12 +6164,6 @@
 		(uuid "d3cf0668-acb3-4fa4-81e1-8650e14cc051")
 	)
 	(junction
-		(at 163.83 210.82)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d4e4dada-844a-4010-8a59-4ea74f4e0645")
-	)
-	(junction
 		(at 195.58 22.86)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6633,10 +6208,6 @@
 	(no_connect
 		(at 58.42 222.25)
 		(uuid "09d00775-064a-4062-9ad0-d8798a45b0f7")
-	)
-	(no_connect
-		(at 166.37 199.39)
-		(uuid "1d1f0463-7f8f-40d6-af2b-4a779b990b33")
 	)
 	(no_connect
 		(at 58.42 224.79)
@@ -6758,16 +6329,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 210.82) (xy 163.83 210.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0a15caed-1c14-4ea3-9524-eed879413188")
-	)
-	(wire
-		(pts
 			(xy 64.77 171.45) (xy 64.77 173.99)
 		)
 		(stroke
@@ -6775,16 +6336,6 @@
 			(type default)
 		)
 		(uuid "0bd561a2-1015-475b-b390-7c58fde52168")
-	)
-	(wire
-		(pts
-			(xy 184.15 220.98) (xy 182.88 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "102b8fe5-7b87-4772-b621-c3c8ed65f120")
 	)
 	(wire
 		(pts
@@ -6825,16 +6376,6 @@
 			(type default)
 		)
 		(uuid "1378bbce-d8a1-455b-a783-4d2712d9437b")
-	)
-	(wire
-		(pts
-			(xy 144.78 210.82) (xy 144.78 223.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "13dad142-9e90-4ed8-8766-951bf9c8ad4a")
 	)
 	(wire
 		(pts
@@ -6918,16 +6459,6 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 226.06) (xy 144.018 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20a463a7-2ca6-443d-a35e-7fd9bfcac33f")
-	)
-	(wire
-		(pts
 			(xy 273.05 34.29) (xy 273.05 36.195)
 		)
 		(stroke
@@ -6998,16 +6529,6 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 219.71) (xy 135.89 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2729fe20-5738-4af0-9c23-5356f89a231d")
-	)
-	(wire
-		(pts
 			(xy 119.38 127) (xy 147.32 127)
 		)
 		(stroke
@@ -7035,16 +6556,6 @@
 			(type default)
 		)
 		(uuid "2addeedb-09b0-4a12-bc9d-3c773bd9c45c")
-	)
-	(wire
-		(pts
-			(xy 163.83 210.82) (xy 184.15 210.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2d27f3d0-3d40-48e0-a165-5e83f415dae0")
 	)
 	(wire
 		(pts
@@ -7478,16 +6989,6 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 209.55) (xy 163.83 210.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "57486ffe-fc96-4a44-b563-52dd9af1671a")
-	)
-	(wire
-		(pts
 			(xy 78.74 194.31) (xy 78.74 198.12)
 		)
 		(stroke
@@ -7828,16 +7329,6 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 210.82) (xy 184.15 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a2c11c0-ad0d-4e8e-904f-8cf516fee021")
-	)
-	(wire
-		(pts
 			(xy 273.05 31.75) (xy 273.05 34.29)
 		)
 		(stroke
@@ -8098,16 +7589,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 223.52) (xy 147.32 223.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "928b3bea-76b3-43b0-8f70-3df089e0d683")
-	)
-	(wire
-		(pts
 			(xy 238.76 31.75) (xy 238.76 34.29)
 		)
 		(stroke
@@ -8115,16 +7596,6 @@
 			(type default)
 		)
 		(uuid "9319d0a7-3217-43e1-b655-9ec3b86453a9")
-	)
-	(wire
-		(pts
-			(xy 138.43 232.41) (xy 138.43 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "94116f65-931b-4fb2-99e2-bafc0bd23c65")
 	)
 	(wire
 		(pts
@@ -8325,16 +7796,6 @@
 			(type default)
 		)
 		(uuid "a3010103-c19e-42d8-b1be-e59f0a0183a0")
-	)
-	(wire
-		(pts
-			(xy 161.29 196.85) (xy 161.29 199.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5cb71d3-d263-48e1-a2cd-7f7a56a0a443")
 	)
 	(wire
 		(pts
@@ -8595,16 +8056,6 @@
 			(type default)
 		)
 		(uuid "c0a8d0fc-d5d1-424e-80c9-b043da360f1a")
-	)
-	(wire
-		(pts
-			(xy 144.018 226.06) (xy 147.32 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c33990c1-95c4-4bf2-9455-ef3ad78f7335")
 	)
 	(wire
 		(pts
@@ -8898,16 +8349,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 220.98) (xy 147.32 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ee99bc42-87c4-4194-af83-bcb549cbdfa6")
-	)
-	(wire
-		(pts
 			(xy 133.35 91.44) (xy 147.32 91.44)
 		)
 		(stroke
@@ -8965,16 +8406,6 @@
 			(type default)
 		)
 		(uuid "f266aba6-7247-409c-b843-b2be13b1d572")
-	)
-	(wire
-		(pts
-			(xy 182.88 220.98) (xy 180.34 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f2ad248d-9ac7-438e-a6bf-ee6262d8ad29")
 	)
 	(wire
 		(pts
@@ -9255,16 +8686,6 @@
 			(justify left bottom)
 		)
 		(uuid "6858aec3-d3c5-4f35-b62e-f3cd98bc818e")
-	)
-	(label "3v3 Spec"
-		(at 144.78 210.82 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "791871a0-b3fa-4d79-8745-0575fd1f00dd")
 	)
 	(label "QSPI_SS"
 		(at 16.51 107.95 0)
@@ -12022,73 +11443,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:CAP_CERAMIC_0603MP")
-		(at 144.018 231.14 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "373e3d76-3830-4cd7-92d8-555c7578168b")
-		(property "Reference" "C12"
-			(at 141.728 229.89 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10uF"
-			(at 146.318 229.89 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 144.018 231.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 144.018 231.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 144.018 231.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "575140c7-640c-4b8a-8dba-0f8c290ed215")
-		)
-		(pin "2"
-			(uuid "7b50c23c-85e6-423e-946e-f642e77e3c27")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "C12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:VBUS")
 		(at 60.96 189.23 0)
 		(unit 1)
@@ -12218,79 +11572,6 @@
 			(project "RP2350a Reference"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
 					(reference "C68")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Switch:SW_Push_SPDT")
-		(at 163.83 204.47 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "49b46998-1f5d-414e-af0c-70ee00d80156")
-		(property "Reference" "SW3"
-			(at 168.91 203.1999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SW_Push_SPDT"
-			(at 168.91 205.7399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:SW-TH_SHOU-HAN_SS12D10G4"
-			(at 163.83 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2108201830_SHOU-HAN-SS12D10G4-071_C2887259.pdf"
-			(at 163.83 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Momentary Switch, single pole double throw"
-			(at 163.83 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "6bfa0579-d299-43ac-bd6d-e90d2ec25374")
-		)
-		(pin "1"
-			(uuid "bd08be7e-c937-46ce-9395-634b54cf65c4")
-		)
-		(pin "2"
-			(uuid "871c6df9-ad43-4ca0-9b95-ffb1d4e65134")
-		)
-		(instances
-			(project ""
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "SW3")
 					(unit 1)
 				)
 			)
@@ -12701,205 +11982,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:VBUS")
-		(at 135.89 217.17 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5208cd53-c1bc-4a26-88d0-4f7e8d21bdf5")
-		(property "Reference" "#U$06"
-			(at 135.89 217.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VBUS"
-			(at 134.366 216.154 0)
-			(effects
-				(font
-					(size 1.27 1.0795)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 135.89 217.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 135.89 217.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 135.89 217.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bbc53f46-308e-4ef3-9beb-e739b02f317f")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#U$06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:CAP_CERAMIC_0603MP")
-		(at 182.88 226.06 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "53b41b58-15ec-479d-83c6-c9689139c331")
-		(property "Reference" "C13"
-			(at 180.59 224.81 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "22uF"
-			(at 185.18 224.81 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 182.88 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 182.88 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 182.88 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "719ffc3c-6a7c-4a4b-90b6-5f589cc250ec")
-		)
-		(pin "2"
-			(uuid "23905604-1ad3-463e-9f79-17d1c3c637e9")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "C13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:+3V3")
-		(at 161.29 194.31 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "59d0aa1b-930a-44d5-946c-ce51b923cabb")
-		(property "Reference" "#+3V012"
-			(at 161.29 194.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 161.29 191.77 0)
-			(effects
-				(font
-					(size 1.778 1.5113)
-				)
-			)
-		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 161.29 194.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 161.29 194.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 161.29 194.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "80f5f77e-bbd8-414e-a620-95d27d9de847")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#+3V012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3V3")
 		(at 195.58 21.59 0)
 		(unit 1)
@@ -13049,7 +12131,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "10k"
 			(at 241.808 222.504 0)
 			(effects
 				(font
@@ -13076,7 +12158,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "787K 0603"
+		(property "Description" "10k 0603"
 			(at 246.38 219.71 0)
 			(effects
 				(font
@@ -13095,72 +12177,6 @@
 			(project "FC_V5a"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
 					(reference "R80")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 138.43 232.41 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "626f7553-0cee-40d3-9686-b7974941cd73")
-		(property "Reference" "#PWR017"
-			(at 138.43 238.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 138.43 236.8534 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 138.43 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 138.43 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 138.43 232.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "17028096-6c20-4fcb-8ac3-e5df72fb4eb7")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -13361,72 +12377,6 @@
 			(project "RP2350a Reference"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
 					(reference "#PWR075")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 144.018 233.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6c3ac4d2-a217-4893-90ff-ee8caf713302")
-		(property "Reference" "#PWR018"
-			(at 144.018 240.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 144.018 238.1234 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 144.018 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 144.018 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 144.018 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "249470e1-1e51-4dfe-bda8-6e92895d8730")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -14904,72 +13854,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 182.88 228.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a0b2299d-a094-417a-a8bd-3e2fdb880590")
-		(property "Reference" "#PWR022"
-			(at 182.88 234.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 182.88 233.0434 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 182.88 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 182.88 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 182.88 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8a41766a-9fa8-45ee-b522-cef5bc030d27")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:+3V3")
 		(at 107.95 109.22 0)
 		(mirror y)
@@ -15496,133 +14380,6 @@
 			(project "FC_V5"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
 					(reference "R27")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AZ1117CH-3.3TRG1:AZ1117CH-3.3TRG1")
-		(at 147.32 220.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c583abbc-5bad-4ed5-a833-f9186754bd76")
-		(property "Reference" "IC2"
-			(at 163.83 213.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AZ1117CH-3.3TRG1"
-			(at 163.83 215.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-223"
-			(at 176.53 218.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA25/1776204.pdf"
-			(at 176.53 220.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "1.35A 3.3V LDO Reg. Current Limit SOT223 DiodesZetex AZ1117CH-3.3TRG1, LDO Voltage Regulator, 0.8A, 3.3 V +/-1%, maximum of 15 Vin, 3-Pin SOT-223"
-			(at 176.53 223.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Height" "1.8"
-			(at 176.53 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "621-AZ1117CH-3.3TRG1"
-			(at 176.53 228.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/AZ1117CH-3.3TRG1?qs=FKu9oBikfSm7ntaG6olPSQ%3D%3D"
-			(at 176.53 231.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Diodes Inc."
-			(at 176.53 233.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "AZ1117CH-3.3TRG1"
-			(at 176.53 236.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d2e63b57-87ae-4e0f-afee-bbc08c8bc954")
-		)
-		(pin "2"
-			(uuid "5e06d31c-ccd1-4ddb-bd45-04e56b8aa737")
-		)
-		(pin "3"
-			(uuid "d6d71333-8368-4877-ae44-cab6ef375252")
-		)
-		(pin "4"
-			(uuid "58cb8d2f-1ef4-4fa2-81a1-82bf63fd3070")
-		)
-		(instances
-			(project "FC_V5"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "IC2")
 					(unit 1)
 				)
 			)
