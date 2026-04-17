@@ -132,6 +132,7 @@
 			(psnegative no)
 			(psa4output no)
 			(plot_black_and_white yes)
+			(plotinvisibletext no)
 			(sketchpadsonfab no)
 			(plotpadnumbers no)
 			(hidednponfab no)
@@ -1021,6 +1022,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "71c938a6-0c9d-4f9f-b35e-950357560324")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-00005edb1aa1")
 		(sheetname "/")
@@ -1216,6 +1229,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d602c4ae-d735-4754-86c3-3fd7fc247e3e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C11702"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fe6bc101-49d6-4848-b0e8-7d16138d9bcd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1471,14 +1496,14 @@
 			(size 4.4 4.4)
 			(layers "F.Cu" "F.Mask")
 			(zone_connect 2)
-			(uuid "ce39cc1b-a432-4124-8734-5c642825941d")
+			(uuid "afc35a2d-cf7d-4099-8a54-bcd2517f0003")
 		)
 		(pad "1" connect circle
 			(at 0 0)
 			(size 4.4 4.4)
 			(layers "B.Cu" "B.Mask")
 			(zone_connect 2)
-			(uuid "ce39cc1b-a432-4124-8734-5c642825941d")
+			(uuid "f17525d4-d87b-4daa-89d4-9eeb96678b62")
 		)
 		(embedded_fonts no)
 	)
@@ -2432,10 +2457,22 @@
 				)
 			)
 		)
+		(property "LCSC" "C25905"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e4daab97-6fbd-4424-9f33-139b41895182")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/c3c42601-5c94-4a33-ba2b-4da7feb215e7")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
-		(attr smd exclude_from_bom)
+		(attr smd)
 		(fp_line
 			(start -0.153641 0.38)
 			(end 0.153641 0.38)
@@ -2628,6 +2665,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a8e62755-8429-479c-af82-c193e77be7e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9ab7660b-3dc2-4207-a651-9881693b0fed")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2835,10 +2884,22 @@
 				)
 			)
 		)
+		(property "LCSC" "C25905"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "dfd4f5ef-69bf-40ce-bc28-f1b81390394e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/ca02a1e3-a9d1-49ad-8fd3-eefe3ebff7cc")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
-		(attr smd exclude_from_bom)
+		(attr smd)
 		(fp_line
 			(start -0.153641 -0.38)
 			(end 0.153641 -0.38)
@@ -3029,6 +3090,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e405dab8-ca52-4d26-9ff1-2af64b75ca64")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ff2e3a20-172b-4393-8d9c-c1ed1adb6ed5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3239,6 +3312,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "d7eacd8c-9592-4114-91e4-95e8e2a2163f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/84d1d74c-e719-4f45-8e0a-4079071f447a")
 		(sheetname "/")
@@ -3432,6 +3517,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "41c11fac-7e9e-4ce0-b905-57d4fda10d13")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C54068"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7ba4e572-d115-44ce-9fea-60c32d4a9bd0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3841,6 +3938,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a4e321ea-52b0-4a16-a59f-6a770108ce4b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/f276290b-2d70-4069-8595-84d752260c28")
 		(sheetname "/")
@@ -4034,6 +4143,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5816dbb8-aaae-4193-a0b9-ea4a5bdf859c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8f6ad4ea-6473-4efd-a5fb-221bae9611ca")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4241,6 +4362,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C16780"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e4bb5e97-360c-46a8-9406-949796cb6569")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/5f629da9-6d37-48b8-b189-043906768daa")
 		(sheetname "/")
@@ -4434,6 +4567,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8a259317-7deb-4b09-8d30-cf4f75bb8089")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "3fe1a99c-abc3-4ba9-85cf-e5fcb0e90092")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4645,7 +4790,7 @@
 		(path "/094a887d-24ae-4f5d-a0e1-96a05007dee9")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_pos_files exclude_from_bom)
 		(fp_line
 			(start -1.38 6.46)
 			(end 1.38 6.46)
@@ -4898,6 +5043,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a3804d88-a5b3-4f1e-82fd-9f78c063213f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C19702"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e6860335-ad75-4415-8cb3-797d6f0e3fca")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5272,6 +5429,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5762c03e-376d-4244-8dfc-144fee0ad249")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "78cd7185-961d-4c2a-885f-3bfb9b0d5fa1")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5703,6 +5872,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C11616"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7f9a1e72-0fdf-4e2f-8a03-76f34c5f24b6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/06b6b48e-ed9f-4b3e-a46e-01c0f6bf5542")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
@@ -5897,6 +6078,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7594ec4d-fac9-4a48-90a2-ec3df16c2fc0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4337d0d3-eaee-4b8e-9e92-c03701941f74")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6105,6 +6298,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "340b9e22-a77f-4005-ae8c-24ff950d9a03")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/ede04200-df20-4532-8b32-347ec23014a8")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
@@ -6301,6 +6506,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "16d41723-5aa5-4be9-825d-0fe6a08021e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C3174425"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8de22a6a-f726-4b4d-83ac-83bcd27bb93c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6571,6 +6788,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4ec43eca-ed7d-4fb8-af9f-c57cfed1aabe")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c4900e45-8aa1-46b8-bf63-20abaa1732dd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7209,14 +7438,14 @@
 			(size 4.4 4.4)
 			(layers "F.Cu" "F.Mask")
 			(zone_connect 2)
-			(uuid "9063e515-5644-465b-9224-193e0c3e8817")
+			(uuid "88faa80c-8a1a-43fe-b59d-2aa471eb5d3b")
 		)
 		(pad "1" connect circle
 			(at 0 0)
 			(size 4.4 4.4)
 			(layers "B.Cu" "B.Mask")
 			(zone_connect 2)
-			(uuid "9063e515-5644-465b-9224-193e0c3e8817")
+			(uuid "b91efac8-2c53-4b2a-9609-c06fa044f9f8")
 		)
 		(embedded_fonts no)
 	)
@@ -7268,6 +7497,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "05193305-1c21-46c7-9789-a4db466477d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ffe48b32-a072-4467-a396-1082abb7df86")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7470,6 +7711,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "41da97fd-a931-4da8-9a96-8cf2d22b5e74")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "42b2a4b4-6337-4937-9706-64dc1f3d0463")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7929,14 +8182,14 @@
 			(size 4.4 4.4)
 			(layers "F.Cu" "F.Mask")
 			(zone_connect 2)
-			(uuid "923fcac5-7f87-4ee4-83c7-897ee860f3df")
+			(uuid "afe9941c-1e6e-41cc-a3f4-2cdf2661efda")
 		)
 		(pad "1" connect circle
 			(at 0 0)
 			(size 4.4 4.4)
 			(layers "B.Cu" "B.Mask")
 			(zone_connect 2)
-			(uuid "923fcac5-7f87-4ee4-83c7-897ee860f3df")
+			(uuid "f9a19db1-bdf7-4462-96ce-88eebdf39ce2")
 		)
 		(embedded_fonts no)
 	)
@@ -7988,6 +8241,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "785c3279-1291-46af-abd0-e92e7866359c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5135a236-d5f1-4621-960f-a592ab017187")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16616,6 +16881,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C42411118"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2918ada3-fbc6-4bbe-b565-e4c6ccc4f0af")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/2389eca7-da66-44d1-af87-52c76ec9f3df")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
@@ -17906,6 +18183,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e16705ac-dd0f-407f-aff3-bebf970e4876")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/97938b44-99e4-4126-8ac8-f54d926cada1")
 		(sheetname "/")
@@ -18098,6 +18387,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "71e6ab5a-8bc8-4045-b809-b9534cb695ac")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c0e98695-0d97-42e4-a0bc-b0ea8045884a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18507,6 +18808,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2cb6af79-3e1d-4c3d-b8ba-ed3285627f5f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/09ab511d-dd65-4485-93f8-c002ceb1c2ed")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
@@ -18701,6 +19014,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c848ee2f-6296-4a01-b53b-9cef05de63ad")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C160389"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "16f53ffd-c842-4d87-beb0-124344f49877")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19145,6 +19470,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b7ed7dad-9755-4776-ac03-79b28fa8a36c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C19702"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9ba0b37e-3136-46f8-94f1-45bb0695c250")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20623,6 +20960,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8744e432-8ddc-472a-abf7-fada97f5f0e4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/61b44108-f5c0-4064-aad5-19763b9f3ea2")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
@@ -20817,6 +21166,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e834dea5-808c-4b0d-8d8c-16d357086dfa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5cd5e10d-391b-4571-9289-5f0e2d37ac94")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21257,6 +21618,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a46b625c-ccb6-45a9-abfa-260e5fb8d072")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/960030f5-ac36-4f2f-95a1-04d14f5bd7d6")
 		(sheetname "/")
@@ -21459,6 +21832,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "15ad327f-a2f6-4399-b1e5-ead3d3d294aa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/f8a26924-3712-4291-a6c1-b7d45fe13c64")
 		(sheetname "/")
@@ -21652,6 +22037,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ac863a16-36b1-486b-8bd6-c7149f4f2585")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C11702"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fbb4851a-b6f0-41a8-953f-0c5d281e2dbf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21860,6 +22257,18 @@
 				)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4ea1c6af-02ca-402a-a9cd-a3e06ded8a9d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
 		(path "/8f8fc32b-6919-4041-9d3c-606dde380543")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V1.kicad_sch")
@@ -22056,6 +22465,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2b3d50dc-26e3-44bf-aa02-5cdfe8643bca")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C59461"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0334d72e-bbdd-4034-b627-216f71c3a6ba")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22315,14 +22736,14 @@
 			(size 4.4 4.4)
 			(layers "F.Cu" "F.Mask")
 			(zone_connect 2)
-			(uuid "a3081fd1-ce3f-4626-9e46-a102cce8d0a4")
+			(uuid "4029f19f-180b-4acf-8f04-0ee0f85e46f5")
 		)
 		(pad "1" connect circle
 			(at 0 0)
 			(size 4.4 4.4)
 			(layers "B.Cu" "B.Mask")
 			(zone_connect 2)
-			(uuid "a3081fd1-ce3f-4626-9e46-a102cce8d0a4")
+			(uuid "6c149847-8097-483d-8642-36274f72e563")
 		)
 		(embedded_fonts no)
 	)
