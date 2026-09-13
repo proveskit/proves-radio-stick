@@ -84,7 +84,7 @@
 					(type background)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(name "GND"
@@ -102,7 +102,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin input line
 				(at -17.78 -7.62 0)
 				(length 5.08)
 				(name "RXEN"
@@ -120,7 +120,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin input line
 				(at -17.78 -10.16 0)
 				(length 5.08)
 				(name "TXEN"
@@ -138,7 +138,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin output line
 				(at -17.78 -13.97 0)
 				(length 5.08)
 				(name "DIO2"
@@ -156,7 +156,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 20.32 270)
 				(length 5.08)
 				(name "VCC"
@@ -174,7 +174,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin output line
 				(at -17.78 -16.51 0)
 				(length 5.08)
 				(name "DIO1"
@@ -192,7 +192,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin output line
 				(at 17.78 7.62 180)
 				(length 5.08)
 				(name "BUSY"
@@ -210,7 +210,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin input line
 				(at -17.78 11.43 0)
 				(length 5.08)
 				(name "NRST"
@@ -228,7 +228,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin output line
 				(at -17.78 3.81 0)
 				(length 5.08)
 				(name "MISO"
@@ -246,7 +246,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin input line
 				(at -17.78 1.27 0)
 				(length 5.08)
 				(name "MOSI"
@@ -264,7 +264,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin input line
 				(at -17.78 -1.27 0)
 				(length 5.08)
 				(name "SCK"
@@ -282,7 +282,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin input line
 				(at -17.78 8.89 0)
 				(length 5.08)
 				(name "NSS"
@@ -300,7 +300,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin passive line
 				(at 16.51 -10.16 180)
 				(length 5.08)
 				(name "ANT"
@@ -320,7 +320,7 @@
 			)
 		)
 		(symbol "E22-400M30S_1_1"
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -339,7 +339,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -358,7 +358,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -377,7 +377,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -396,7 +396,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin passive line
 				(at 0 20.32 270)
 				(length 5.08)
 				(hide yes)
@@ -415,7 +415,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -434,7 +434,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -453,7 +453,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -472,7 +472,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at 0 -25.4 90)
 				(length 5.08)
 				(hide yes)
@@ -494,16 +494,12 @@
 		)
 		(embedded_fonts no)
 	)
-(symbol "TPS62085RLTT"
+	(symbol "TPS62085RLTT"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "U"
 			(at 0 8.89 0)
-			(show_name no)
-			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -511,9 +507,7 @@
 			)
 		)
 		(property "Value" "TPS62085RLTT"
-			(at 0 -8.89 0)
-			(show_name no)
-			(do_not_autoplace no)
+			(at -14.732 -8.636 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -522,46 +516,38 @@
 		)
 		(property "Footprint" "easyeda2kicad:VSON-7_L2.0-W2.0-P0.5-TL"
 			(at 0 -11.43 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Description" ""
 			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "LCSC Part" "C2070694"
 			(at 0 -13.97 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(symbol "TPS62085RLTT_0_1"
@@ -587,8 +573,26 @@
 					(type none)
 				)
 			)
-			(pin unspecified line
+			(pin power_in line
 				(at -8.89 3.81 0)
+				(length 2.54)
+				(name "VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -8.89 1.27 0)
 				(length 2.54)
 				(name "EN"
 					(effects
@@ -605,62 +609,8 @@
 					)
 				)
 			)
-			(pin unspecified line
-				(at -8.89 1.27 0)
-				(length 2.54)
-				(name "PG"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin unspecified line
-				(at -8.89 -1.27 0)
-				(length 2.54)
-				(name "FB"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin unspecified line
+			(pin power_in line
 				(at -8.89 -3.81 0)
-				(length 2.54)
-				(name "VOS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin unspecified line
-				(at 8.89 -1.27 180)
 				(length 2.54)
 				(name "GND"
 					(effects
@@ -677,8 +627,8 @@
 					)
 				)
 			)
-			(pin unspecified line
-				(at 8.89 1.27 180)
+			(pin passive line
+				(at 8.89 3.81 180)
 				(length 2.54)
 				(name "SW"
 					(effects
@@ -695,17 +645,53 @@
 					)
 				)
 			)
-			(pin unspecified line
-				(at 8.89 3.81 180)
+			(pin passive line
+				(at 8.89 1.27 180)
 				(length 2.54)
-				(name "VIN"
+				(name "VOS"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "7"
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 8.89 -1.27 180)
+				(length 2.54)
+				(name "FB"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 8.89 -3.81 180)
+				(length 2.54)
+				(name "PG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -835,7 +821,7 @@
 					(type none)
 				)
 			)
-			(pin unspecified line
+			(pin passive line
 				(at -5.08 0 0)
 				(length 1.016)
 				(name "1"
@@ -853,7 +839,7 @@
 					)
 				)
 			)
-			(pin unspecified line
+			(pin passive line
 				(at 5.08 0 180)
 				(length 1.016)
 				(name "2"

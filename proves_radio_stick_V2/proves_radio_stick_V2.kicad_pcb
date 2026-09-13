@@ -603,7 +603,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -955,7 +955,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1157,7 +1157,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1369,7 +1369,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1430,7 +1430,7 @@
 		)
 		(fp_line
 			(start -1.38 1.27)
-			(end 1.38 1.27)
+			(end 1 1.27)
 			(stroke
 				(width 0.12)
 				(type solid)
@@ -1450,7 +1450,7 @@
 		)
 		(fp_line
 			(start -1.38 14.08)
-			(end 1.38 14.08)
+			(end 1 14.08)
 			(stroke
 				(width 0.12)
 				(type solid)
@@ -1667,7 +1667,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 225)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1881,7 +1881,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2485,7 +2485,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2912,7 +2912,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3339,7 +3339,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3489,7 +3489,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3519,8 +3519,8 @@
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
 		(attr smd)
 		(fp_circle
-			(center -0.9 -1.3)
-			(end -0.758579 -1.3)
+			(center -1.2 -1.04)
+			(end -1.058579 -1.04)
 			(stroke
 				(width 0.1)
 				(type solid)
@@ -3691,7 +3691,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4116,7 +4116,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4327,7 +4327,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4711,7 +4711,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4925,7 +4925,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5800,7 +5800,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6083,7 +6083,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 225)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6297,7 +6297,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -6475,7 +6475,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6632,6 +6632,7 @@
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
 			(net 1 "GND")
+			(zone_connect 2)
 			(pintype "passive")
 			(uuid "9eb685b6-801e-4afc-b468-c3219278bca9")
 		)
@@ -6677,7 +6678,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6828,7 +6829,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -6947,7 +6948,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7161,7 +7162,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7576,7 +7577,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -7695,7 +7696,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17411,7 +17412,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17717,6 +17718,7 @@
 			(size 1.5 0.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 1 "GND")
+			(zone_connect 2)
 			(pinfunction "GND")
 			(pintype "unspecified")
 			(uuid "b9695b26-4d5a-446b-9ca8-ccba9375f271")
@@ -17781,7 +17783,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -17882,7 +17884,7 @@
 		)
 		(fp_poly
 			(pts
-				(xy 0 3.22) (xy 0.44 3.83) (xy -0.44 3.83)
+				(xy 0 2.67) (xy 0.44 3.28) (xy -0.44 3.28)
 			)
 			(stroke
 				(width 0.12)
@@ -18476,7 +18478,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18903,7 +18905,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19318,7 +19320,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -19987,7 +19989,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20461,7 +20463,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20663,7 +20665,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -21683,7 +21685,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 225)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21913,7 +21915,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22064,7 +22066,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22278,7 +22280,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -22512,7 +22514,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23367,7 +23369,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23518,7 +23520,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -23850,7 +23852,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23999,7 +24001,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C411292.pdf"
+		(property "Datasheet" "https://lcsc.com/product-detail/Wireless-Modules_Chengdu-Ebyte-Elec-Tech-E22-400M30S_C411292.html"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -24650,7 +24652,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4.7k resistor"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -24807,7 +24809,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4.7k resistor"
 			(at 0 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -24961,7 +24963,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ferrite bead"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -25269,7 +25271,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "10uF capacitor"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -25420,7 +25422,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "100nF capacitor"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -25876,7 +25878,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps22918.pdf"
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
@@ -25889,7 +25891,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "TPS22918 5.5V 2A load switch, adjustable slew, QOD, SOT-23-6"
+		(property "Description" "5.5V 2A 52mOhm load switch, adjustable rise time (CT), QOD, SOT23-6"
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
@@ -26246,7 +26248,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "1nF 50V X7R 0402"
+		(property "Description" "1nF 50V X7R 0402, TPS22918 CT (2.9 ms ramp)"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -26403,7 +26405,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "1uF 16V X5R 0402"
+		(property "Description" "1uF 16V X7R 0402, TPS22918 VIN bypass"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -26560,7 +26562,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "10k 1% 0402"
+		(property "Description" "10k 0402, RF_PWR_EN pull-up (radio ON by default)"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -26685,13 +26687,23 @@
 	)
 	(gr_line
 		(start 223.65 110.8)
-		(end 223.65 116.7)
+		(end 223.65 112.0)
 		(stroke
 			(width 0.15)
 			(type default)
 		)
 		(layer "B.SilkS")
 		(uuid "1eb29aea-c801-45fa-9b8a-fca968c9e956")
+	)
+	(gr_line
+		(start 223.65 115.0)
+		(end 223.65 116.7)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "B.SilkS")
+		(uuid "bca81da5-771b-478e-ad01-a85871b84a6f")
 	)
 	(gr_line
 		(start 231.1 110.8)
@@ -26734,14 +26746,24 @@
 		(uuid "6551317b-5ff5-4b84-8da4-d42df1f78afd")
 	)
 	(gr_line
-		(start 236.1 116.7)
-		(end 236.1 110.8)
+		(start 236.1 110.8)
+		(end 236.1 112.0)
 		(stroke
 			(width 0.15)
 			(type default)
 		)
 		(layer "B.SilkS")
 		(uuid "69cc1b25-0d1d-407d-be28-f668b6171e1e")
+	)
+	(gr_line
+		(start 236.1 115.0)
+		(end 236.1 116.7)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "B.SilkS")
+		(uuid "bed7c9b0-bf93-4963-b7ac-ce45e2b2bbb8")
 	)
 	(gr_line
 		(start 228.6 110.8)
@@ -26755,13 +26777,23 @@
 	)
 	(gr_line
 		(start 218.55 110.8)
-		(end 218.55 116.7)
+		(end 218.55 112.0)
 		(stroke
 			(width 0.15)
 			(type default)
 		)
 		(layer "B.SilkS")
 		(uuid "9a8b1c9b-b825-46bd-8380-5d6883e5073b")
+	)
+	(gr_line
+		(start 218.55 115.0)
+		(end 218.55 116.7)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "B.SilkS")
+		(uuid "347ca1c5-0eb1-4707-9e77-9b3eea42b31f")
 	)
 	(gr_line
 		(start 226.05 116.7)
@@ -26794,18 +26826,6 @@
 		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "049906fa-e2a3-4e09-b0da-cfe3b0edd5c3")
-	)
-	(gr_text "Wait its all\nopen source?"
-		(at 99.16 115.92 -0)
-		(layer "F.SilkS")
-		(uuid "e6d0a312-20e8-497b-a0d3-90ce844de9b1")
-		(effects
-			(font
-				(size 0.5 0.5)
-				(thickness 0.125)
-			)
-			(justify left bottom)
-		)
 	)
 	(gr_text "A"
 		(at 227.3 112.2 0)
@@ -26892,12 +26912,12 @@
 		)
 	)
 	(gr_text "GND"
-		(at 239.3 116.4 0)
+		(at 238.75 116.4 0)
 		(layer "B.SilkS")
 		(uuid "7c954d6d-a335-40c4-827b-897a993f2a87")
 		(effects
 			(font
-				(size 1 1)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify left bottom mirror)
@@ -31805,14 +31825,6 @@
 		(uuid "d4d30707-f7ba-48cc-aac7-a332ffadca09")
 	)
 	(segment
-		(start 226.778844 100.526942)
-		(end 226.781543 100.529641)
-		(width 0.1524)
-		(layer "F.Cu")
-		(net 44)
-		(uuid "dee66c92-58a3-43cc-b8e1-3907ad57af54")
-	)
-	(segment
 		(start 230.82375 99.749741)
 		(end 230.050299 99.749742)
 		(width 0.1524)
@@ -33890,7 +33902,7 @@
 		(uuid "0bbc197a-0e30-401d-8bbf-85757615a1d1")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify mirror)
@@ -33902,7 +33914,7 @@
 		(uuid "d20ff5a1-3925-4a4e-9a30-f80dca640edf")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify mirror)
@@ -33914,7 +33926,7 @@
 		(uuid "67f37dfc-89cb-4789-9ce0-f09d3b814d5c")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify mirror)
@@ -33926,7 +33938,7 @@
 		(uuid "86bd81d8-4e29-47fd-8157-8a28da9134aa")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify mirror)
@@ -33938,7 +33950,7 @@
 		(uuid "f2532c64-8d92-464b-a7af-07100e062c15")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.6)
 				(thickness 0.15)
 			)
 			(justify mirror)
@@ -33950,7 +33962,7 @@
 		(uuid "4aa95f24-42a0-463f-83e5-cb29fdfb0118")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify mirror)
@@ -33962,7 +33974,7 @@
 		(uuid "431bcb60-545a-4aca-a9ed-b39cca1b73f1")
 		(effects
 			(font
-				(size 0.7 0.7)
+				(size 0.8 0.8)
 				(thickness 0.15)
 			)
 			(justify mirror)
