@@ -645,7 +645,7 @@
 		(path "/a57a1b73-c5c6-4e24-86cf-d5b118c94faa")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
@@ -1397,7 +1397,7 @@
 		(path "/a2931616-60a2-491e-a64d-1e4c764cb222")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_line
 			(start -1.38 -1.38)
 			(end 0 -1.379999)
@@ -3381,7 +3381,7 @@
 		(path "/4a0fbb1e-b363-401f-a0bc-bd5784d536d5")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
@@ -6720,7 +6720,7 @@
 		(path "/aaeee1ea-8047-4033-a1a9-b4a580a1cda6")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
@@ -17454,7 +17454,7 @@
 		(path "/3cf07bdf-1273-4e85-97f6-caf0ea460f97")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
@@ -17803,6 +17803,30 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC Part" "C474928"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f475c63c-04b5-4893-b921-c47a0fed1aba")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "KF128-2.54-10P"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6c88f79d-d88f-4855-b2ab-87f940387a88")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -21957,7 +21981,7 @@
 		(path "/01c61635-f2cc-48a0-a78d-96107ee801e7")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
@@ -23411,7 +23435,7 @@
 		(path "/4b94e19c-f773-4fba-a432-1c3df43332c4")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
@@ -23894,7 +23918,7 @@
 		(path "/a65b7c6b-ab4f-4aac-b439-ae9b521d10ca")
 		(sheetname "/")
 		(sheetfile "proves_radio_stick_V2.kicad_sch")
-		(attr through_hole)
+		(attr through_hole exclude_from_bom)
 		(fp_circle
 			(center 0 0)
 			(end 1.4 0)
