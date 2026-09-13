@@ -632,110 +632,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Adafruit ItsyBitsy RP2040-eagle-import:+3V3"
-			(power)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#+3V3"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3V3"
-				(at -2.54 -5.08 90)
-				(effects
-					(font
-						(size 1.778 1.5113)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "+3V3_1_0"
-				(polyline
-					(pts
-						(xy 0 0) (xy -1.27 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.905) (xy 0 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin power_in line
-					(at 0 -2.54 90)
-					(length 2.54)
-					(name "+3V3"
-						(effects
-							(font
-								(size 0 0)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0 0)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Adafruit ItsyBitsy RP2040-eagle-import:CAP_CERAMIC_0603MP"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1154,110 +1050,6 @@
 						)
 					)
 					(number "B'"
-						(effects
-							(font
-								(size 0 0)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Adafruit ItsyBitsy RP2040-eagle-import:VBUS"
-			(power)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "VBUS"
-				(at -1.524 1.016 0)
-				(effects
-					(font
-						(size 1.27 1.0795)
-					)
-					(justify left bottom)
-				)
-			)
-			(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "VBUS_1_0"
-				(polyline
-					(pts
-						(xy -1.27 -1.27) (xy 0 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin power_in line
-					(at 0 -2.54 90)
-					(length 2.54)
-					(name "VBUS"
-						(effects
-							(font
-								(size 0 0)
-							)
-						)
-					)
-					(number "1"
 						(effects
 							(font
 								(size 0 0)
@@ -7010,6 +6802,145 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:VBUS"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "VBUS"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"VBUS\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "VBUS_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "VBUS_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -10725,16 +10656,6 @@
 		)
 		(uuid "83e4e538-ac17-407a-82e5-f4d33d528bb6")
 	)
-	(label "~{RESET}"
-		(at 228.6 224.79 90)
-		(effects
-			(font
-				(size 1.2446 1.2446)
-			)
-			(justify left bottom)
-		)
-		(uuid "8500dbba-6433-4c54-a53e-5f287f53154d")
-	)
 	(label "QSPI_SD3"
 		(at 95.25 115.57 180)
 		(effects
@@ -10774,26 +10695,6 @@
 			(justify right bottom)
 		)
 		(uuid "b41d1eeb-8f8e-4bbe-b47e-36802f977d9f")
-	)
-	(label "SWCLK"
-		(at 133.35 138.43 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b66ccf57-2562-4b36-98b6-d932cf622fe5")
-	)
-	(label "~{RESET}"
-		(at 110.49 127 0)
-		(effects
-			(font
-				(size 1.2446 1.2446)
-			)
-			(justify left bottom)
-		)
-		(uuid "b673e81c-fb57-4eaf-afb9-50e6a1d603a4")
 	)
 	(label "D+"
 		(at 82.55 212.09 0)
@@ -12920,17 +12821,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:+3V3")
-		(at 245.11 209.55 0)
+		(lib_id "power:+3V3")
+		(at 245.11 212.09 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "222fcd3b-1cef-4fe1-9ff3-e5cd4d6fcce0")
-		(property "Reference" "#+3V024"
-			(at 245.11 209.55 0)
+		(uuid "f2a72795-00f1-41ed-9851-2815c1ecccdf")
+		(property "Reference" "#PWR0172"
+			(at 245.11 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12939,15 +12839,15 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 245.11 207.01 0)
+			(at 245.11 208.534 0)
 			(effects
 				(font
-					(size 1.778 1.5113)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 245.11 209.55 0)
+		(property "Footprint" ""
+			(at 245.11 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12956,7 +12856,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 245.11 209.55 0)
+			(at 245.11 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12964,8 +12864,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 245.11 209.55 0)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 245.11 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12974,12 +12874,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "96518570-f8f2-4ebc-9552-95d8b6fd364a")
+			(uuid "b202df43-79c2-4ed5-8285-c8db2620a4de")
 		)
 		(instances
-			(project "FC_V5a"
+			(project "proves_radio_stick_V2"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#+3V024")
+					(reference "#PWR0172")
 					(unit 1)
 				)
 			)
@@ -14037,16 +13937,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:VBUS")
-		(at 60.96 189.23 0)
+		(lib_id "power:VBUS")
+		(at 60.96 191.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3d9aca5d-05de-4d29-9d9a-9e3adbdeed1c")
-		(property "Reference" "#U$05"
-			(at 60.96 189.23 0)
+		(uuid "95618395-d149-4139-8e4c-029ebceb7e25")
+		(property "Reference" "#PWR0169"
+			(at 60.96 195.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14055,16 +13955,15 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 59.436 188.214 0)
+			(at 60.96 188.214 0)
 			(effects
 				(font
-					(size 1.27 1.0795)
+					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 60.96 189.23 0)
+		(property "Footprint" ""
+			(at 60.96 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14073,7 +13972,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 189.23 0)
+			(at 60.96 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14081,8 +13980,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 60.96 189.23 0)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 60.96 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14091,12 +13990,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "733f6a83-c5cb-4e55-9d96-abac4421436e")
+			(uuid "1c497e76-3222-4fee-9e31-cadf131fa2ac")
 		)
 		(instances
-			(project "FC_V5"
+			(project "proves_radio_stick_V2"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#U$05")
+					(reference "#PWR0169")
 					(unit 1)
 				)
 			)
@@ -16112,16 +16011,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:VBUS")
-		(at 308.61 93.98 0)
+		(lib_id "power:VBUS")
+		(at 308.61 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8bff254e-6b2a-4440-bcf8-74ff39e34622")
-		(property "Reference" "#U$07"
-			(at 308.61 93.98 0)
+		(uuid "331291a7-d94d-4307-9a49-cf78bce13e62")
+		(property "Reference" "#PWR0170"
+			(at 308.61 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16130,16 +16029,15 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 307.086 92.964 0)
+			(at 308.61 92.964 0)
 			(effects
 				(font
-					(size 1.27 1.0795)
+					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 308.61 93.98 0)
+		(property "Footprint" ""
+			(at 308.61 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16148,7 +16046,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 308.61 93.98 0)
+			(at 308.61 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16156,8 +16054,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 308.61 93.98 0)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 308.61 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16166,12 +16064,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "dd895670-fbb8-449e-bd0b-e3534aa3bd83")
+			(uuid "a0ef42d1-b391-44fb-bc3b-3bab1916ffe3")
 		)
 		(instances
 			(project "proves_radio_stick_V2"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#U$07")
+					(reference "#PWR0170")
 					(unit 1)
 				)
 			)
@@ -16997,17 +16895,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:+3V3")
-		(at 107.95 109.22 0)
-		(mirror y)
+		(lib_id "power:+3V3")
+		(at 107.95 111.76 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a25ef9e2-050c-4e75-981f-08618aef02dc")
-		(property "Reference" "#+3V01"
-			(at 107.95 109.22 0)
+		(uuid "f7852f28-c6a1-41c5-a486-9d97b99f4879")
+		(property "Reference" "#PWR0173"
+			(at 107.95 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17016,16 +16913,15 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 110.49 114.3 90)
+			(at 107.95 108.204 0)
 			(effects
 				(font
-					(size 1.778 1.5113)
+					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 107.95 109.22 0)
+		(property "Footprint" ""
+			(at 107.95 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17034,7 +16930,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 107.95 109.22 0)
+			(at 107.95 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17042,8 +16938,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 107.95 109.22 0)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 107.95 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17052,12 +16948,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "f5cb5569-33ec-44b0-b508-0b7c43f41ef7")
+			(uuid "bb7903d9-1b8c-48f0-9779-3378bdf9dd98")
 		)
 		(instances
-			(project "RP2350a Reference"
+			(project "proves_radio_stick_V2"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#+3V01")
+					(reference "#PWR0173")
 					(unit 1)
 				)
 			)
@@ -19147,17 +19043,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:+3V3")
-		(at 121.92 189.23 0)
+		(lib_id "power:+3V3")
+		(at 121.92 191.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ff9d64f8-cf4b-4854-89a2-3d29753a6046")
-		(property "Reference" "#+3V09"
-			(at 121.92 189.23 0)
+		(uuid "3fd89f82-c162-41c1-a874-7c01a3b72019")
+		(property "Reference" "#PWR0174"
+			(at 121.92 195.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19166,15 +19061,15 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 121.92 186.69 0)
+			(at 121.92 188.214 0)
 			(effects
 				(font
-					(size 1.778 1.5113)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 121.92 189.23 0)
+		(property "Footprint" ""
+			(at 121.92 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19183,7 +19078,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 189.23 0)
+			(at 121.92 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19191,8 +19086,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 121.92 189.23 0)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 121.92 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19201,12 +19096,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "2085128c-4bda-45ca-88ae-e78498305e9e")
+			(uuid "584eda79-374a-460a-aad4-91f8c13e2e34")
 		)
 		(instances
-			(project "FC_V5a"
+			(project "proves_radio_stick_V2"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#+3V09")
+					(reference "#PWR0174")
 					(unit 1)
 				)
 			)
@@ -19993,16 +19888,16 @@
 		(uuid "b6ba1f72-5a58-4719-892f-427b235e9a44")
 	)
 	(symbol
-		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:VBUS")
-		(at 298.45 127 0)
+		(lib_id "power:VBUS")
+		(at 298.45 129.54 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7b021afa-b6e4-4eb9-b506-d7990cce4899")
-		(property "Reference" "#U$08"
-			(at 298.45 127 0)
+		(uuid "5a5dbe58-6b8d-437b-a445-d6d7a3c17892")
+		(property "Reference" "#PWR0171"
+			(at 298.45 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20011,16 +19906,15 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 296.926 125.984 0)
+			(at 298.45 125.984 0)
 			(effects
 				(font
-					(size 1.27 1.0795)
+					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 298.45 127 0)
+		(property "Footprint" ""
+			(at 298.45 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20029,7 +19923,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 298.45 127 0)
+			(at 298.45 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20037,8 +19931,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 298.45 127 0)
+		(property "Description" "Power symbol creates a global label with name \"VBUS\""
+			(at 298.45 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20047,12 +19941,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "184ebd62-c085-4b7f-a644-e8a60f4ef55a")
+			(uuid "62922cf2-f376-42c2-b1af-2872d8776d9c")
 		)
 		(instances
 			(project "proves_radio_stick_V2"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#U$08")
+					(reference "#PWR0171")
 					(unit 1)
 				)
 			)
