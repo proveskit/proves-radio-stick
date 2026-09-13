@@ -27,6 +27,7 @@ Being able to send and receive data using radios is one of the most fundemental 
 | DIO1 | RF1_IO1 | 15 |
 | DIO2 | RF1_IO2 | 16 |
 | RXEN / TXEN | RF1_RX_EN / RF1_TX_EN | 20 / 21 |
-| VCC | RF_VCC (5 V, VBUS via FB1) | — |
+| VCC | RF_VCC (5 V, VBUS → FB1 → U19 TPS22918 load switch) | — |
+| Radio power enable | RF_PWR_EN → U19 ON (10k pull-up to 3V3, default ON) | 18 |
 
-V2 note: at 30 dBm the E22 draws ~650 mA peak on TX, above the 500 mA USB 2.0 default. Bulk capacitance on `RF_VCC` covers short packets; use a USB 3 or high-current port for sustained TX. Firmware differs from V1: SX1268 driver with BUSY handshake, not SX1278. Pin numbering differs from FC v5e (v5e uses SPI0 GPIO9-12, BUSY 13, DIO1 14, RXEN 22).
+V2 note: at 30 dBm the E22 draws ~650 mA peak on TX, above the 500 mA USB 2.0 default; use a USB 3 or high-current port for sustained TX. The 110 µF behind U19 soft-starts over ~3 ms (CT 1 nF, ~0.19 A inrush) so the host only sees ~11 µF at plug-in. Drive GPIO18 low then high to power-cycle the radio (hold NRST low and SPI lines low while off). V2 drops the 2.54 mm SWD pin header J1; use the JST-SH SWD connector J22. Firmware differs from V1: SX1268 driver with BUSY handshake, not SX1278. Pin numbering differs from FC v5e (v5e uses SPI0 GPIO9-12, BUSY 13, DIO1 14, RXEN 22).

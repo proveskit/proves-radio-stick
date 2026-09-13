@@ -7196,6 +7196,213 @@
 			)
 			(embedded_fonts no)
 		)
+	
+		(symbol "easyeda2kicad:TPS22918DBV"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -6.35 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TPS22918DBV"
+				(at 2.54 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+				(at 0 12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps22918.pdf"
+				(at 1.27 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "1V to 5.5V, 2A, 52mΩ Load Switch with adjustable rise time and QOD, SOT23-6"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "high-side power distribution switch"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TPS22918DBV_0_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "TPS22918DBV_1_1"
+				(pin power_in line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "ON"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "CT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "QOD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "VOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(circle
 		(center 114.3 67.945)
@@ -7903,16 +8110,6 @@
 			(type default)
 		)
 		(uuid "161a605d-a0cb-40e4-a25a-1509cb72d40c")
-	)
-	(wire
-		(pts
-			(xy 298.45 22.86) (xy 309.88 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16ee9f9d-fa96-453f-8f23-10f798287a8f")
 	)
 	(wire
 		(pts
@@ -10943,28 +11140,6 @@
 			)
 		)
 	)
-	(global_label "SWDIO"
-		(shape input)
-		(at 309.88 20.32 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "42af0e02-e15b-483c-9d80-8ffc4a2e88d3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 301.0286 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SDA1"
 		(shape bidirectional)
 		(at 218.44 78.74 0)
@@ -11462,28 +11637,6 @@
 		(uuid "a6dfb88b-043c-4fb5-a33a-12d1a4a1868b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 363.2964 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SWCLK"
-		(shape input)
-		(at 309.88 25.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a94e8c78-1d1d-492d-95f0-316c174b7099")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 300.6658 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12376,79 +12529,6 @@
 			(project "FC_V5"
 				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
 					(reference "SW2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x03")
-		(at 314.96 22.86 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "094a887d-24ae-4f5d-a0e1-96a05007dee9")
-		(property "Reference" "J1"
-			(at 317.5 21.5899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "SWD Port"
-			(at 317.5 24.1299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-			(at 314.96 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 314.96 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 314.96 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "eb59dbf0-793b-432e-a3af-6a250638c220")
-		)
-		(pin "3"
-			(uuid "065d9d0c-e7ae-4ea5-b33f-d97a1e88576e")
-		)
-		(pin "2"
-			(uuid "b2eb2c51-f771-4e53-b462-a075ba6de988")
-		)
-		(instances
-			(project "proves_radio_stick_V2"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -18453,72 +18533,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 298.45 22.86 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "eb43894d-6cb3-4334-94eb-e43d598ed65f")
-		(property "Reference" "#PWR01"
-			(at 298.45 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 298.45 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 298.45 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 298.45 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 298.45 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c7e78e59-aaf7-479c-ba82-72cc07b29fe6")
-		)
-		(instances
-			(project "proves_radio_stick_V2"
-				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
-					(reference "#PWR01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "mainboard:RESISTOR0603")
 		(at 119.38 201.93 90)
 		(unit 1)
@@ -19915,16 +19929,12 @@
 		(uuid "ca1a3cd4-dffd-4272-912d-0c41465ca1a8")
 	)
 	(no_connect
-		(at 210.82 119.38)
-		(uuid "cc596096-1029-4641-ae03-88ba35d6976d")
-	)
-	(no_connect
 		(at 210.82 121.92)
 		(uuid "2e7baae7-f0b7-4649-94e8-49c8f2409efc")
 	)
 	(symbol
 		(lib_id "Adafruit ItsyBitsy RP2040-eagle-import:VBUS")
-		(at 337.82 127 0)
+		(at 298.45 127 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19932,7 +19942,7 @@
 		(dnp no)
 		(uuid "7b021afa-b6e4-4eb9-b506-d7990cce4899")
 		(property "Reference" "#U$08"
-			(at 337.82 127 0)
+			(at 298.45 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19941,7 +19951,7 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 336.296 125.984 0)
+			(at 296.926 125.984 0)
 			(effects
 				(font
 					(size 1.27 1.0795)
@@ -19950,7 +19960,7 @@
 			)
 		)
 		(property "Footprint" "Adafruit ItsyBitsy RP2040:"
-			(at 337.82 127 0)
+			(at 298.45 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19959,7 +19969,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 337.82 127 0)
+			(at 298.45 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19968,7 +19978,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 337.82 127 0)
+			(at 298.45 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19988,19 +19998,9 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 337.82 129.54) (xy 342.9 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "77248b83-cf45-4878-a113-0bb96ab72fe5")
-	)
 	(symbol
 		(lib_id "Device:FerriteBead")
-		(at 346.71 129.54 90)
+		(at 313.69 129.54 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20008,7 +20008,7 @@
 		(dnp no)
 		(uuid "7a1e4c02-5b3d-4f8e-9a61-2c0d8e5f1a03")
 		(property "Reference" "FB1"
-			(at 346.71 126.492 0)
+			(at 313.69 126.492 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20016,7 +20016,7 @@
 			)
 		)
 		(property "Value" "BLM21PG600SN1D"
-			(at 346.71 132.588 0)
+			(at 313.69 132.588 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20024,7 +20024,7 @@
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_0805_2012Metric"
-			(at 346.71 129.54 0)
+			(at 313.69 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20033,7 +20033,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 346.71 129.54 0)
+			(at 313.69 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20042,7 +20042,7 @@
 			)
 		)
 		(property "Description" "Ferrite bead"
-			(at 346.71 129.54 0)
+			(at 313.69 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20051,7 +20051,7 @@
 			)
 		)
 		(property "LCSC Part" "C18305"
-			(at 346.71 129.54 0)
+			(at 313.69 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20073,16 +20073,6 @@
 				)
 			)
 		)
-	)
-	(wire
-		(pts
-			(xy 350.52 129.54) (xy 378.46 129.54)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff2f26b8-91e5-4dc7-b405-c2863253bbbf")
 	)
 	(global_label "RF_VCC"
 		(shape bidirectional)
@@ -21387,7 +21377,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 355.6 129.54 0)
+		(at 325.12 129.54 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21395,7 +21385,7 @@
 		(dnp no)
 		(uuid "15ccde77-cb0f-49da-ab17-c2224da8014e")
 		(property "Reference" "#FLG02"
-			(at 355.6 127.635 0)
+			(at 325.12 127.635 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21404,7 +21394,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 355.6 125.73 0)
+			(at 325.12 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21412,7 +21402,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 355.6 129.54 0)
+			(at 325.12 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21421,7 +21411,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 355.6 129.54 0)
+			(at 325.12 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21430,7 +21420,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 355.6 129.54 0)
+			(at 325.12 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21449,12 +21439,6 @@
 				)
 			)
 		)
-	)
-	(junction
-		(at 355.6 129.54)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9f1340b2-2062-416f-84f0-d5e4af4019e0")
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
@@ -21750,6 +21734,798 @@
 			(justify left top)
 		)
 		(uuid "516fbbcf-0bcc-47a9-9b2c-93aab1829302")
+	)
+	(symbol
+		(lib_id "easyeda2kicad:TPS22918DBV")
+		(at 347.98 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a1e4c02-5b3d-4f8e-9a61-2c0d8e5f1a09")
+		(property "Reference" "U19"
+			(at 341.63 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TPS22918DBVR"
+			(at 338.0 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
+			(at 347.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tps22918.pdf"
+			(at 347.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "5.5V 2A 52mOhm load switch, adjustable rise time (CT), QOD, SOT23-6"
+			(at 347.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C131941"
+			(at 347.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ee7d5e4b-4b32-4c0d-86dc-5d4e806c982b")
+		)
+		(pin "2"
+			(uuid "4fd260f4-b8ab-4566-8799-2755b5a7ca3a")
+		)
+		(pin "3"
+			(uuid "c1d9c38b-e36a-46bd-b60f-28899205f567")
+		)
+		(pin "4"
+			(uuid "85d7ee5f-252a-416b-bc73-6c0c770b7898")
+		)
+		(pin "5"
+			(uuid "a0733b4c-acdc-4712-8ec3-bb49480ab3d3")
+		)
+		(pin "6"
+			(uuid "ec2ae0e8-ba53-4546-a8bb-c2b307ef8ee9")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "U19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 325.12 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a1e4c02-5b3d-4f8e-9a61-2c0d8e5f1a11")
+		(property "Reference" "C80"
+			(at 323.85 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1uF"
+			(at 323.85 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 325.12 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 325.12 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1uF 16V X7R 0402, TPS22918 VIN bypass"
+			(at 325.12 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C52923"
+			(at 325.12 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "00a9350c-0789-48a5-83f8-b459a3dfb4d5")
+		)
+		(pin "2"
+			(uuid "e61bd0ca-f667-49af-a6e2-eed7df8e6231")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "C80")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 331.47 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a1e4c02-5b3d-4f8e-9a61-2c0d8e5f1a10")
+		(property "Reference" "C79"
+			(at 330.2 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1nF"
+			(at 330.2 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 331.47 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 331.47 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1nF 50V X7R 0402, TPS22918 CT (2.9 ms ramp)"
+			(at 331.47 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C1523"
+			(at 331.47 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "79929796-e6bc-4fed-914b-e508693d26b7")
+		)
+		(pin "2"
+			(uuid "8d31f36b-8b04-40c2-98f1-1bcfc4b109a9")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "C79")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 334.01 151.13 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a1e4c02-5b3d-4f8e-9a61-2c0d8e5f1a12")
+		(property "Reference" "R95"
+			(at 335.788 149.9616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 335.788 152.273 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 332.232 151.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 334.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10k 0402, RF_PWR_EN pull-up (radio ON by default)"
+			(at 334.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C25744"
+			(at 334.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "743bbeb6-2cb4-4009-8a13-814c69fed2a8")
+		)
+		(pin "2"
+			(uuid "b72b5a04-3b6c-4079-9830-c3ff4a42b5ac")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "R95")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 325.12 139.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2f8662c4-0e14-47f7-8169-09fe1e75c4f2")
+		(property "Reference" "#PWR0165"
+			(at 325.12 146.04999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 325.12 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 325.12 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 325.12 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name GND, ground"
+			(at 325.12 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "be7828bd-4cc8-4e8a-af9e-11df5bcc074a")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "#PWR0165")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 331.47 139.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d2b2e7e3-600d-41ae-8882-8f57b0a756fa")
+		(property "Reference" "#PWR0166"
+			(at 331.47 146.04999999999998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 331.47 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 331.47 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 331.47 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name GND, ground"
+			(at 331.47 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "33394fbc-c91b-48fe-9ec9-096731ed641e")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "#PWR0166")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 347.98 142.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3d843c07-d009-4e33-b6d3-813409fad989")
+		(property "Reference" "#PWR0167"
+			(at 347.98 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 347.98 147.32000000000002 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 347.98 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 347.98 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name GND, ground"
+			(at 347.98 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1219169f-2586-4058-afd7-85307c5ec1e4")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "#PWR0167")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 334.01 154.94 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d235c830-edb5-4693-be0b-e652d97fef63")
+		(property "Reference" "#PWR0168"
+			(at 334.01 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 334.01 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 334.01 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 334.01 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name +3V3"
+			(at 334.01 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a8b631a1-af34-408b-bd20-1e358d91055f")
+		)
+		(instances
+			(project "proves_radio_stick_V2"
+				(path "/c64c0d72-a9f6-4f3a-891e-1f647558f538"
+					(reference "#PWR0168")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 298.45 129.54) (xy 309.88 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd31be64-a0f7-4fd5-a097-c46dd5ed731c")
+	)
+	(wire
+		(pts
+			(xy 317.5 129.54) (xy 325.12 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1971703-0ffd-4bed-92fe-c6ef291dc6df")
+	)
+	(wire
+		(pts
+			(xy 325.12 129.54) (xy 330.2 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2261a8c0-0631-443b-b648-6a9409c5ef6e")
+	)
+	(wire
+		(pts
+			(xy 330.2 129.54) (xy 337.82 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad39a58b-92b6-434f-ac38-b6af2ac7b8e6")
+	)
+	(wire
+		(pts
+			(xy 325.12 129.54) (xy 325.12 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06d257d8-7aea-4572-8dfb-5bec1d502e03")
+	)
+	(wire
+		(pts
+			(xy 337.82 132.08) (xy 331.47 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e3e46b4-fd86-4b2b-9a68-1c89368b0565")
+	)
+	(wire
+		(pts
+			(xy 337.82 134.62) (xy 334.01 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "759ac525-a50a-415f-be8f-d0ecfbfb880c")
+	)
+	(wire
+		(pts
+			(xy 334.01 134.62) (xy 334.01 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06756453-a301-4633-901d-734cbe794bb6")
+	)
+	(wire
+		(pts
+			(xy 347.98 139.7) (xy 347.98 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15b25e3b-1dd5-4273-a335-7eb1d25e5af3")
+	)
+	(wire
+		(pts
+			(xy 358.14 129.54) (xy 378.46 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9806e800-f259-4d3a-9056-63e118f0046d")
+	)
+	(wire
+		(pts
+			(xy 358.14 132.08) (xy 359.41 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d44fbad5-7b7a-496f-9f2b-c2e5ed20898a")
+	)
+	(wire
+		(pts
+			(xy 359.41 132.08) (xy 359.41 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "033af341-ae02-4a85-8d9c-18ea475b917d")
+	)
+	(junction
+		(at 325.12 129.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e75e5a6a-ee08-4965-9f20-3719e69c50a4")
+	)
+	(junction
+		(at 359.41 129.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5535fd8d-d84e-4f1e-8bf4-095c7cae9d42")
+	)
+	(global_label "RF_5V_IN"
+		(shape bidirectional)
+		(at 330.2 129.54 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e2128492-e356-479e-92de-98a8f7e69dda")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 330.2 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RF_PWR_EN"
+		(shape input)
+		(at 334.01 147.32 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e5fa8c31-7a5e-4507-be6e-275d59c4746d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 334.01 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RF_PWR_EN"
+		(shape output)
+		(at 210.82 119.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b48ac050-d5b5-4a7c-8c4a-91899ae2faf3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 210.82 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(text "U19 TPS22918: CT 1nF -> 2.9 ms ramp,\n0.19 A inrush into 110 uF.\nR95 to +3V3 = radio ON by default;\nmove R95 to GND for default OFF\n(firmware enables via GPIO18)."
+		(exclude_from_sim no)
+		(at 381 132.08 0)
+		(effects
+			(font
+				(size 1.0 1.0)
+			)
+			(justify left top)
+		)
+		(uuid "57f238f5-fa35-4520-b5fe-97db6f928908")
 	)
 	(sheet_instances
 		(path "/"
