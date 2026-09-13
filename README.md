@@ -5,8 +5,28 @@ New repo for working on a USB stick sized LoRa radio module.
 Being able to send and receive data using radios is one of the most fundemental functionalities of the satellite system. Right now, if we want to do anything with the radios we need to take a whole flight controller board out and get it setup to send and receive data. It would be nice to have an [RTL-SDR Style](https://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/) USB dongle that can be used for testing and ground station purposes! 
 
 # Design Requirements
-- Employs an RP2040 Microcontroller
-- Onboard low noise LDO Regulator for converting USB 5V to 3.3V for the Microcontroller and Radio
-- Uses an RFM9XW radio module slot
+- Employs an RP2040 Microcontroller (V0); RP2350 from V1 onward
+- Onboard 3.3 V regulator for the microcontroller (LDO on V0, TPS62085 buck from V1); V2 radio runs from 5 V VBUS via ferrite
+- Radio module: RFM9XW slot (V0), EByte E32-400M20S (V1), EByte E22-400M30S (V2)
 - SMA Adaptor for the Antenna
 - Is as comapct as possible 
+
+# Versions
+| Dir | MCU | Radio | Rail | Antenna | Notes |
+|---|---|---|---|---|---|
+| `provesradiostick_V0` | RP2040 | RFM9XW slot (SX127x) | 3V3 LDO | SMA | Original concept |
+| `proves_radio_stick_V1` | RP2350 | EByte E32-400M20S (SX1278, 20 dBm) | 3V3 buck (TPS62085) | SMA | 4-layer 60 x 32.89 mm |
+| `proves_radio_stick_V2` | RP2350 | EByte E22-400M30S (SX1268, 30 dBm) — same module as FC v5e | 3V3 buck + 5 V `RF_VCC` from VBUS via ferrite | SMA | 4-layer 80.5 x 32.89 mm; V1 stretched 20.5 mm to fit the 24 x 38.5 mm module |
+
+## V2 radio pinout (RP2350 GPIO)
+| E22 pin | Net | GPIO |
+|---|---|---|
+| NSS / SCK / MOSI / MISO | SPI1_CS0 / SPI1_SCK / SPI1_MOSI / SPI1_MISO | 9 / 10 / 11 / 8 |
+| NRST | RF1_RST | 6 |
+| BUSY | RF1_IO0 | 14 |
+| DIO1 | RF1_IO1 | 15 |
+| DIO2 | RF1_IO2 | 16 |
+| RXEN / TXEN | RF1_RX_EN / RF1_TX_EN | 20 / 21 |
+| VCC | RF_VCC (5 V, VBUS via FB1) | — |
+
+V2 note: at 30 dBm the E22 draws ~650 mA peak on TX, above the 500 mA USB 2.0 default. Bulk capacitance on `RF_VCC` covers short packets; use a USB 3 or high-current port for sustained TX. Firmware differs from V1: SX1268 driver with BUSY handshake, not SX1278. Pin numbering differs from FC v5e (v5e uses SPI0 GPIO9-12, BUSY 13, DIO1 14, RXEN 22).
