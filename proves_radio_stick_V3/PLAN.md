@@ -51,7 +51,7 @@ supported firmware target** (matches the F Prime + Zephyr flight software).
 
 | Decision | Recommendation | Why |
 |---|---|---|
-| Package | **UFQFPN-48 (STM32U585CIU6)** | Confirmed JLC part; 48 pins is enough (see pin budget). Fallback: pin-compatible STM32U575CIU6 if stock is out (loses crypto accelerators only). |
+| Package | **UFQFPN-48 (STM32U585CIU6)** | Confirmed JLC part (C5271026); 48 pins is enough (see pin budget). No in-stock drop-in fallback, so pre-buy the chips. |
 | Regulator variant | **LDO part (no "Q" suffix)** | SMPS "Q" variants need an extra inductor + VDD11 pins; LDO keeps the BOM and layout simple. Power saving isn't the point of this board. |
 | USB clock | **HSI48 + CRS synced to USB SOF** | Crystal-less USB FS is supported; removes a dependency on HSE. |
 | HSE | **Populate a 16 MHz 3225 crystal** (reuse ABM8 family if available) | Lets devs learn RCC/PLL config the "normal" way and gives stable SPI/timer clocks. |
@@ -86,14 +86,18 @@ E22-400M30S behaves the same on V3 (it is the same module, so it should).
 
 ## Phases
 
-### Phase 0 — Sourcing check (½ day)
-- [ ] Confirm live JLC stock/price of STM32U585CIU6 (C5271026); note fallback
-      STM32U575CIU6 LCSC number.
-- [ ] Confirm LCSC numbers for: STDC14 2x7 1.27 mm header, 16 MHz and
-      32.768 kHz crystals, USBLC6-2SC6, BOOT0/user buttons (reuse KMR2 C72443).
-- [ ] Record which parts are Basic vs Extended; target ≤ 12 unique extended parts.
-- [ ] Check whether JLC Economic PCBA accepts this 4-layer stack-up; otherwise
-      budget for Standard PCBA.
+### Phase 0 — Sourcing check (½ day) — results in [SOURCING.md](SOURCING.md)
+- [x] STM32U585CIU6 (C5271026): 103 at JLC, $11.73. U575CIU6 fallback has
+      **0 stock**, so there is no drop-in fallback.
+- [x] LCSC numbers: HSE C13738 (Basic), LSE C97604, USBLC6-2SC6 C7519,
+      STDC14 male 2x7 1.27 mm THT C22438122, buttons C72443.
+- [x] Basic vs Extended: about 18 unique Extended (target ≤ 12 not met; see
+      SOURCING.md for trims). Swap TPS62085RLTT → RLTR (C130072), which has
+      more stock.
+- [ ] **Buy STM32U585CIU6 + E22-400M30S into the JLC parts library** once the
+      schematic freezes.
+- [ ] Check whether JLC Economic PCBA accepts this 4-layer stack-up plus THT
+      parts; otherwise budget for Standard PCBA.
 
 ### Phase 1 — Pin map (1 day)
 - [ ] New CubeMX project for STM32U585CIUx; enable USB OTG_FS device, SPI1,
