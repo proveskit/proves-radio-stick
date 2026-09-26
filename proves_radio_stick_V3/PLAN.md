@@ -43,7 +43,7 @@ supported firmware target** (matches the F Prime + Zephyr flight software).
 | Radio ctrl | RST 6, BUSY 14, DIO1 15, DIO2 16, RXEN 20, TXEN 21, PWR_EN 18 | → GPIOs; BUSY/DIO1 on distinct EXTI lines |
 | J3 breakout | GPIO22-29 (4 ADC) | → 8 pins chosen to expose ADC, timer PWM, a 2nd SPI/I2C/UART |
 | J4 (DNP) | I2C1 + UART0 + 3V3 | → keep as DNP header: I2C1 + USART1 |
-| LEDs | D3 power, D1 Firmware_Active (GPIO7) | keep; add optional 2nd user LED |
+| LEDs | D3 power, D1 Firmware_Active (GPIO7) | keep (Firmware_Active → PB0) |
 | — | — | **Add** user button (SW3) |
 | Radio power | VBUS → FB1 → TPS22918 → RF_VCC | unchanged |
 
@@ -61,25 +61,12 @@ supported firmware target** (matches the F Prime + Zephyr flight software).
 | USB current detect | **Route CC1/CC2 to ADC pins** (keep 5.1k Rd) | Reads the Type-C host's Rp to tell default (500 mA USB 2 / 900 mA USB 3), 1.5 A or 3 A; firmware caps E22 TX power when the port can't source ~650 mA. |
 | Board stack/outline | **Reuse V2 4-layer, 80.5 x 32.89 mm** | Keeps RF, USB-C and SMA placement and the plastic/enclosure story unchanged. |
 
-## Pin budget (UFQFPN-48 ≈ 38 I/O after power, USB, SWD, OSC)
+## Pin map
 
-Tentative — **must be validated in CubeMX** against DS13086 alternate-function
-tables before schematic entry.
-
-| Function | Pins | Tentative assignment |
-|---|---|---|
-| USB FS | 2 | PA11 DM, PA12 DP |
-| SWD + SWO | 3 | PA13 SWDIO, PA14 SWCLK, PB3 SWO |
-| HSE / LSE | 4 | PH0/PH1, PC14/PC15 |
-| BOOT0 | 1 | PH3-BOOT0 |
-| Radio SPI | 4 | SPI1: PA5 SCK, PA6 MISO, PA7 MOSI, PA4 NSS (GPIO) |
-| Radio control | 7 | NRST, BUSY (EXTI), DIO1 (EXTI), DIO2, RXEN, TXEN, RF_PWR_EN |
-| Debug VCP UART | 2 | USART1 PA9/PA10 → STDC14 |
-| J4 I2C | 2 | I2C1 PB6/PB7 (+4.7k pull-ups) |
-| LEDs + user button | 3 | Firmware_Active LED, user LED, SW3 |
-| USB CC sense | 2 | CC1, CC2 on ADC-capable pins |
-| J3 breakout | 8 | ≥3 ADC, ≥2 timer PWM, one SPI2 or I2C/UART pair |
-| **Total** | **38** | ~0 spare — trim J3 or the user LED if CubeMX finds conflicts |
+Done in Phase 1; see [pinmap/README.md](pinmap/README.md) and
+`pinmap/pinmap.csv`. The package has 37 I/O pins and all 37 are used (radio
+11, USB 2, SWD+SWO 3, crystals 4, BOOT0 1, USART1 2, I2C1 2, LED 1, button 1,
+CC sense 2, J3 8).
 
 TCXO note: FC v5e sets `dio3-tcxo-voltage = SX126X_DIO3_TCXO_1V8`; confirm the
 E22-400M30S behaves the same on V3 (it is the same module, so it should).
@@ -99,33 +86,41 @@ E22-400M30S behaves the same on V3 (it is the same module, so it should).
 - [ ] Check whether JLC Economic PCBA accepts this 4-layer stack-up plus THT
       parts; otherwise budget for Standard PCBA.
 
-### Phase 1 — Pin map (1 day)
-- [ ] New CubeMX project for STM32U585CIUx; enable USB OTG_FS device, SPI1,
-      USART1, I2C1, RTC/LSE, HSE, SWD+SWO, EXTI for BUSY/DIO1.
-- [ ] Assign J3 breakout pins to maximise peripheral variety.
-- [ ] Publish the pin table in the README (same format as the V2 table); it
-      becomes the Zephyr pinctrl/devicetree input in Phase 4.
+### Phase 1 — Pin map ✅
+- [x] Pin map validated against ST open pin data (AFs, EXTI lines, no
+      conflicts): [pinmap/README.md](pinmap/README.md).
+- [x] Trade-offs: no second user LED, J4 UART shares USART1 with the VCP,
+      no VBUS sense.
 
-### Phase 2 — Schematic (2–3 days)
-- [ ] Copy V2 project to `proves_radio_stick_V3/` (rename files, keep
-      footprint libs and `jlcpcb/project.db` workflow).
-- [ ] Delete RP2350 sheet section, W25Q128, Y1 12 MHz, L3, C65/C66/C68/C69
-      (1V1/VREG_AVDD), R7/R8, R93/R94, J22.
-- [ ] Add STM32U585 symbol/footprint (KiCad lib has `MCU_ST_STM32U5`;
-      check UFQFPN-48 footprint's exposed-pad handling).
-- [ ] Power: 100 nF per VDD pin + 4.7 µF bulk, VDDA 1 µF + 100 nF (ferrite
-      optional), VDDUSB 100 nF, VBAT to 3V3, VCAP 4.7 µF per datasheet.
-- [ ] NRST: 100 nF to GND + SW2 + STDC14 pin. SWD: J22 JST-SH and STDC14 in
-      parallel on SWDIO/SWCLK/GND. BOOT0: 10k pulldown + SW1 to 3V3.
-- [ ] USB: USBLC6-2 at connector, 5.1k CC pulldowns unchanged, CC1/CC2 also
-      to ADC pins (host current advertisement), VBUS sense
-      divider to a GPIO (optional, useful for USB-detect examples).
-- [ ] Radio: re-wire SPI/control nets to the Phase 1 pins; keep R9/R14/R15/
-      R5/R11/R12 pull-ups/-downs and TP1–TP7.
-- [ ] Add SW3 user button, optional second LED.
-- [ ] ERC clean; add LCSC field on every part (same convention as V2).
+### Phase 2 — Schematic ✅ (generated; needs human review in KiCad)
+`proves_radio_stick_V3.kicad_sch` is generated from V2 by
+`tools/gen_v3_schematic.py`: it removes the RP2350 section and adds the
+STM32U585 block, connected by labels to the unchanged radio, power and USB-C
+sections.
+- [x] Removed U18 RP2350, U11 W25Q128, Y1, L3, C2, C63–C78, R1, R2, R10, R93,
+      R94, D4 and the old SW1 BOOTSEL chain.
+- [x] U1 STM32U585CIU6 (QFN-48 7x7, EP to GND, thermal vias). C101–C103
+      100 nF VDD, C104 4.7 µF bulk, C105 100 nF VBAT, C106 1 µF + C107 100 nF
+      VDDA, C108 4.7 µF VCAP (AN5373, LDO part), C109 100 nF NRST.
+- [x] HSE Y101 16 MHz + 2x 12 pF; LSE Y102 32.768 kHz + 2x 10 pF.
+- [x] SW1 BOOT0 to 3V3 + R101 10k pull-down; SW3 user button on PC13 + R102
+      10k pull-up; SW2 reset unchanged on `~{RESET}` → NRST.
+- [x] J5 STDC14 (SWD, SWO, NRST, VCP on USART1) in parallel with J22 JST-SH.
+- [x] U4 USBLC6-2SC6 on the connector side; R7/R8 now 0 Ω (C17168).
+- [x] USB_CC1/2_SENSE labels on the CC nets → PB1/PB2.
+- [x] J3 nets renamed J3_IO1–J3_IO8. U2 → TPS62085RLTR (C130072).
+- [x] ERC: no connection errors (only the library/footprint-link warnings V2
+      also has). Netlist checked pin-by-pin against `pinmap/pinmap.csv`.
+- [x] BOM `bom/proves_radio_stick_V3.csv`: every fitted part has an LCSC number.
+- [ ] **Human review in KiCad**: tidy placement; the CC2 wire runs behind the
+      V2 `USB_D-` label.
+- [ ] Load-cap check: confirm HSE/LSE gm margin per ST AN2867 once the layout
+      gives a stray-capacitance estimate.
 
-### Phase 3 — Layout (3–4 days)
+### Phase 3 — Layout (3–4 days, in KiCad by a human)
+`proves_radio_stick_V3.kicad_pcb` is still a copy of the V2 board. Start with
+*Tools → Update PCB from Schematic*: this removes the RP2350 footprints and
+loads U1, Y101/Y102, J5, U4, SW3, R101/R102 and C101–C113.
 - [ ] Keep USB-C, buck, load switch, E22 module, SMA, J3 exactly where they
       are in V2; lock them.
 - [ ] Place U585 where RP2350 + flash sat; decoupling on the same layer,
