@@ -134,22 +134,23 @@ loads U1, Y101/Y102, J5, U4, SW3, R101/R102 and C101–C113.
       don't fight.
 - [ ] DRC clean against JLC 4-layer capabilities (reuse V2 DRC rules).
 
-### Phase 4 — Zephyr bring-up, in parallel with Phase 3 (3–5 days)
-Zephyr only — the PROVES flight software (`proves-core-reference`) is F Prime
-on Zephyr, so this is the crossover path that matters.
-- [ ] Zephyr board `boards/bronco_space/proves_radio_stick_v3/` modelled on
-      upstream `b_u585i_iot02a` for SoC/clock setup and on FC v5e's `lora0`
-      node (`semtech,sx1262` compatible, `busy-gpios`, `dio1-gpios`,
-      `rx-enable-gpios`/`tx-enable-gpios`, `dio3-tcxo-voltage`).
-- [ ] RF_PWR_EN handled as a regulator-fixed or power-domain node so the
-      radio is sequenced correctly.
-- [ ] Samples: `blinky`, USB CDC-ACM console, LoRa `send`/`receive`
-      interop test against an FC v5e.
-- [ ] USB-C current detect: read CC ADC at boot, clamp E22 TX power when the
-      host only advertises default USB current.
-- [ ] Document flashing three ways: STLINK-V3MINIE (`west flash`),
-      Raspberry Pi Debug Probe on J22 (`west flash --runner openocd` /
-      pyOCD), and ROM USB DFU (BOOT0 + reset, `dfu-util`).
+### Phase 4 — Zephyr bring-up ✅ (build-verified; needs hardware)
+Zephyr only. Board and app are in [zephyr/](zephyr/README.md), built against
+Zephyr v4.4.2 (the version `proves-core-reference` pins) with no warnings.
+- [x] Board `bronco_space/proves_radio_stick_v3`: HSE → PLL1 160 MHz, USB
+      48 MHz from PLL1Q (Zephyr's U5 driver has no CRS, so crystal-accurate
+      USB instead of HSI48), LSE for RTC/LPTIM, CDC-ACM console.
+- [x] `lora0` on SPI1 matching FC v5e (`semtech,sx1262` compatible so it uses
+      loramac-node like the flight software; TCXO 1.8 V; rx-boosted).
+- [x] RF_PWR_EN as `regulator-fixed`; J3 peripherals pre-wired, disabled.
+- [x] Runners: STM32CubeProgrammer/OpenOCD (STLINK on J5), pyOCD/OpenOCD
+      CMSIS-DAP (Pi Debug Probe on J22), dfu-util (BOOT0 ROM DFU), J-Link.
+- [x] Bring-up app: USB shell with the Zephyr LoRa shell, preset to the
+      flight link (437.4 MHz, BW125, SF8, CR4/5), CC-sense TX power limit.
+- [x] Builds: hello_world, blinky, lora send/receive, bring-up app.
+- [ ] On hardware: USB enumeration, DFU entry, LoRa interop with an FC v5e.
+- [ ] Move the board into `proves-core-reference/boards/bronco_space/` once
+      proven on hardware; MCUboot/sysbuild build not yet tried.
 
 ### Phase 5 — JLC package + review (1 day)
 - [ ] Generate Gerbers/drill/BOM/CPL into `proves_radio_stick_V3/jlcpcb/`.

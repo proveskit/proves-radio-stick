@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_PROVES_RADIO_STICK_V3
+	select SOC_STM32U585XX

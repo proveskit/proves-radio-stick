@@ -1,0 +1,6 @@
+board:
+  name: proves_radio_stick_v3
+  full_name: PROVES Radio Stick V3
+  vendor: bronco_space
+  socs:
+    - name: stm32u585xx
