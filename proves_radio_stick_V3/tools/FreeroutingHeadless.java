@@ -1,7 +1,7 @@
 // Headless Freerouting 2.1 driver. Freerouting's own CLI ignores max passes and
 // never writes the session file, and its pass loop oscillates, so drive the batch
 // autorouter in chunks and keep the session with the fewest open connections.
-// Usage: java -cp freerouting.jar:. Route in.dsn out.ses passes [via_cost ripup_cost]
+// Usage: java -cp freerouting.jar:. FreeroutingHeadless in.dsn out.ses passes [via_cost ripup_cost]
 import app.freerouting.autoroute.BatchAutorouter;
 import app.freerouting.board.*;
 import app.freerouting.core.*;
@@ -11,7 +11,7 @@ import app.freerouting.settings.RouterSettings;
 import java.io.*;
 import java.util.Locale;
 
-public class Route {
+public class FreeroutingHeadless {
   static final int CHUNK = 5;
 
   public static void main(String[] a) throws Exception {

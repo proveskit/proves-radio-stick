@@ -1,4 +1,29 @@
-# PROVES Radio Stick V3 — STM32U585 plan
+# PROVES Radio Stick V3: STM32U5 plan
+
+> **Status 2026-10-30: the MCU is now STM32U575VIT6 (LQFP-100, LCSC C5270999).**
+> The rest of this file is the original UFQFPN-48 U585 plan and is kept for its
+> reasoning. Where it disagrees with the list below, the list wins.
+>
+> - **Why LQFP-100.** The flight controller will move to STM32U5A5VJT6 (most RAM in
+>   the family). Every non-Q STM32U5 LQFP-100 part (U575, U585, U595, U5A5) has the
+>   same pinout, so this stick proves the exact footprint and pin map the FC will
+>   use. U575VIT6 is the one JLC stocks well. Never fit a Q-suffix (SMPS) part.
+> - **Pins.** 36 of 82 I/O are used; 46 are free. See [pinmap/README.md](pinmap/README.md).
+>   The radio pins sit on the package side that faces the E22, and no UCPD1
+>   dead-battery pin (PA15, PB15, PB5, PB14) is used.
+> - **USB clock** comes from the 16 MHz HSE through the PLL, not HSI48 + CRS:
+>   Zephyr's STM32U5 USB driver has no CRS support.
+> - **Dropped:** J4 (DNP I2C1/UART header) and its pull-ups, R7/R8. UART stays on the STDC14 VCP.
+> - **Added:** user LED D2 on PC6, 4.7k I2C3 pull-ups on J3_IO3/IO4.
+> - **30 dBm** needs a USB-C host that offers 1.5 A or more (read on CC1/CC2);
+>   firmware should cap TX power on a default-current port.
+> - **Layout:** V2's board with the RP2350 island replaced; crystals and most decaps
+>   on the bottom inside the LQFP shadow; routed with Freerouting plus
+>   `tools/maze_v3.py`; DRC clean. Regenerate with the tools listed in
+>   [tools/README.md](tools/README.md).
+> - **Decisions and reviews:** [DECISIONS.md](DECISIONS.md), [reviews/](reviews/).
+> - **Order files:** `jlcpcb/` (Gerbers, BOM, CPL), made by `tools/jlc_export.py`.
+
 
 ## Goal
 

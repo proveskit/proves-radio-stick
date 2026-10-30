@@ -1,4 +1,17 @@
-# V3 sourcing check (Phase 0)
+# V3 sourcing check
+
+## 2026-10-30 update: LQFP-100
+
+| Ref | Part | LCSC | JLC stock (10-30) | ~$ | Notes |
+|---|---|---|---|---|---|
+| U1 | STM32U575VIT6, LQFP-100, 2 MB flash, 786 KB RAM | C5270999 | 188 | 6.33 | Replaces the U585CIU6 below. Pin-identical to U5A5VJT6 (FC target) |
+| U3 | E22-400M30S | C411292 | **unclear** | 6.71 | On 10-30 LCSC returned "part not found" and JLC showed no stock. Check in JLC's BOM tool before ordering; if it is gone, pre-order into the JLC parts library or mark U3 DNP and hand-fit |
+| D2, R103 | User LED + 1k | C2290, C11702 | Basic | | Same parts as D1/R13 |
+| R104, R105 | 4.7k I2C3 pull-ups | C25900 | Basic | | |
+
+Removed since the plan below: J4 header, R39/R41 I2C1 pull-ups, R7/R8.
+The QFN-48 notes below are history.
+
 
 Checked 2026-09-26 against the JLCPCB parts API and LCSC. Stock moves daily;
 re-run before ordering. "Basic" = no JLC loading fee; "Extended" = per-unique-
