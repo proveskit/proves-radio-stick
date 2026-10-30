@@ -18,3 +18,8 @@
 | 15 | J3 symbol overlaps the title block in the render: left as is | cosmetic; moving a V2-copied symbol risks broken wires | EE2-07 declined |
 | 16 | E22-400M30S (C411292) shows no LCSC/JLC stock: Michael checks in JLC BOM tool; fallback U3 DNP + hand-fit or pre-order | JLC blocked from the cloud | EE2-01 open |
 | 17 | Netclasses: Default 0.2/0.15, via 0.6/0.3; USB 0.25/0.15; +3V3 0.3; 5 V rails 0.5 | LQFP 0.5 mm escape; JLC 4-layer min 0.09 mm | layout |
+| 18 | Routing: Freerouting 2.1.0 via a headless Java driver (outer layers only, 4 variants, best kept), then maze_v3 for leftovers and plane ties | Freerouting CLI never writes the SES; inner layers stay planes | layout |
+| 19 | Layout r1: C113 turned so VCAP/GND sit under pins 48/49; plane-tie vias on 11 supply pins; J5 turned 180, U4 to 270 to free SWO and VBUS | review-pcb-*-r1 | B1, M1, M3 |
+| 20 | Layout r2: both reviewers GO for 5 prototypes. Fixed J3 pin labels (port letter + number, P dropped to fit 2.54 mm), BOOT/RESET/USER labels behind the switches (V2 "RST" was stale), 7.4 mm dead GND stub, 0.46/0.2 GND vias for U4.2 and U1.27/C102.2 | review-pcb-*-r2 | N3, EE r2 #4 |
+| 21 | Deferred to next spin: U1 pin 99 ground (8 mm), HSE/LSE trace length 9-11 mm, USB pair coupling and D+ ESD stub (matters only for U5A5 HS), fiducials, VCAP/RF_VCC test points, keyed J5 | none stops boot, FS USB or SWD (EE r2) | open |
+| 22 | Order settings: tented vias, two-sided PCBA, BOM/CPL from jlcpcb/production_files (footprints carry no LCSC field); check LQFP/U4/U2/U19/Y101/J12/J5 rotation in JLC's preview | CPL offsets learned from V2; J5 offset unknown | open |

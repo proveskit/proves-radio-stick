@@ -295,6 +295,44 @@ def drop_dangling_vias(b):
             print('drop dangling via', v.GetNetname(), v.GetX() / MM, v.GetY() / MM)
             b.Delete(v)
 
+# Free ends of tracks left without a load once fixups re-tied pin 49 (J12 -> under U1).
+DEAD_ENDS = [('GND', 227.97, 105.46)]
+
+def drop_dead_ends(b):
+    """Walk back from each free end, deleting segments (and their duplicates) until a pad, via or branch."""
+    near = lambda p, q: (p - q).EuclideanNorm() < 0.02 * MM
+    for net, x, y in DEAD_ENDS:
+        at = P(x, y)
+        while True:
+            segs = [t for t in b.GetTracks() if t.Type() == pcbnew.PCB_TRACE_T and t.GetNetname() == net
+                    and (near(at, t.GetStart()) or near(at, t.GetEnd()))]
+            far = {(o.x, o.y) for t in segs for o in [t.GetEnd() if near(at, t.GetStart()) else t.GetStart()]}
+            stop = any(t.Type() == pcbnew.PCB_VIA_T and near(t.GetPosition(), at) for t in b.GetTracks()) or any(
+                p.GetNetname() == net and p.HitTest(at) for f in b.GetFootprints() for p in f.Pads())
+            if not segs or len(far) != 1 or stop:
+                break
+            for t in segs:
+                print('drop dead-end', net, t.GetStart().x / MM, t.GetStart().y / MM, t.GetEnd().x / MM, t.GetEnd().y / MM)
+                b.Delete(t)
+            at = pcbnew.VECTOR2I(*far.pop())
+
+# Small GND vias that fit inside via-less pour patches (EE review r2): U4.2, and U1.27 + C102.2.
+SMALL_GND_VIAS = [(234.65, 99.07), (217.48, 108.80)]
+
+def small_gnd_vias(b):
+    gnd = b.FindNet('GND')
+    for x, y in SMALL_GND_VIAS:
+        if any(t.Type() == pcbnew.PCB_VIA_T and (t.GetPosition() - P(x, y)).EuclideanNorm() < 0.1 * MM
+               for t in b.GetTracks()):
+            continue
+        v = pcbnew.PCB_VIA(b)
+        v.SetPosition(P(x, y))
+        v.SetWidth(int(0.46 * MM))    # 0.13 mm annular, the project minimum
+        v.SetDrill(int(0.2 * MM))
+        v.SetNet(gnd)
+        v.SetLocked(True)
+        b.Add(v)
+
 HOLE2HOLE = 0.5    # JLC: 0.5 mm between hole walls
 
 def spread_vias(b):
@@ -325,23 +363,47 @@ def spread_vias(b):
 
 J3_PINS = ['PA0', 'PA1', 'PC0', 'PC1', 'PB13', 'PC2', 'PC3', 'PA4']
 
+SW_LABELS = {'SW1': 'BOOT', 'SW2': 'RESET', 'SW3': 'USER'}    # on B.Silk behind each switch
+
 def silk(b):
-    """V3 silkscreen: board name, J3 pin names, island passives without refs."""
+    """V3 silkscreen: board name, J3 pin names, island passives without refs. Idempotent."""
     texts = [d for d in b.GetDrawings() if d.GetClass() == 'PCB_TEXT']
-    j3 = sorted((t for t in texts if t.GetText() in [str(n) for n in range(22, 30)]), key=lambda t: t.GetX())
-    for t, name in zip(j3, J3_PINS):
-        t.SetText(name)
+    labels = [str(n) for n in range(22, 30)] + J3_PINS + [n[1:] for n in J3_PINS]
+    j3 = sorted((t for t in texts if t.GetText() in labels and t.GetY() > 115 * MM), key=lambda t: t.GetX())
+    pads = sorted((p for p in b.FindFootprintByReference('J3').Pads() if p.GetNetname() != 'GND'),
+                  key=lambda p: p.GetX())
+    for t, name, pad in zip(j3, J3_PINS, pads):
+        # 'PB13' is wider than the 2.54 mm cell; drop the port 'P' and centre on the pad.
+        t.SetText(name[1:])
+        t.SetTextSize(pcbnew.VECTOR2I(int(0.75 * MM), int(1.0 * MM)))
+        t.SetTextThickness(int(0.15 * MM))
+        t.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_CENTER)
+        t.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
+        t.SetPosition(pcbnew.VECTOR2I(pad.GetX(), int(115.75 * MM)))
+    template = next(t for t in texts if t.GetText() == 'Ebyte E22-400M30S')
     for t in texts:
         txt = t.GetText()
         if txt.startswith('1 2 3 4 5 6 7') or txt.strip() in ('D', 'A'):
             b.Delete(t)
         elif txt.startswith('PROVES Radio Stick V2'):
             t.SetText('PROVES Radio Stick V3\nSTM32U575VIT6, Oct 2026')
-        elif txt == 'RST' and t.GetX() > 220 * MM:
-            note = t.Duplicate()
-            note.SetText('J3: 3.3 V LOGIC ONLY')
-            note.SetPosition(P(226.0, 110.8))
-            b.Add(note)
+        elif txt.startswith('J3:') or txt in SW_LABELS.values() or (txt == 'RST' and t.GetX() > 220 * MM):
+            b.Delete(t)    # V2's RST sat over its reset switch at x 222.4; V3's is SW2
+    def add(text, x, y, angle=0):
+        t = template.Duplicate()
+        t.SetText(text)
+        t.SetHorizJustify(pcbnew.GR_TEXT_H_ALIGN_CENTER)
+        t.SetVertJustify(pcbnew.GR_TEXT_V_ALIGN_CENTER)
+        t.SetTextAngleDegrees(angle)
+        t.SetPosition(P(x, y))
+        b.Add(t)
+    add('J3: 3.3 V ONLY', 232.5, 110.0)
+    for ref, label in SW_LABELS.items():
+        f = b.FindFootprintByReference(ref)
+        f.Reference().SetVisible(False)
+        add(label, f.GetX() / MM, f.GetY() / MM, 90)
+    for ref in ('U1', 'D2'):
+        b.FindFootprintByReference(ref).Reference().SetVisible(False)
     for f in b.GetFootprints():
         ref = f.GetReference()
         x, y = f.GetX() / MM, f.GetY() / MM
@@ -350,6 +412,8 @@ def silk(b):
 
 def finish(b):
     silk(b)
+    drop_dead_ends(b)
+    small_gnd_vias(b)
     drop_dangling_vias(b)
     spread_vias(b)
     for net, layer, width, pts in HAND:
@@ -362,7 +426,7 @@ def finish(b):
 if __name__ == '__main__':
     cmd, args = sys.argv[1], sys.argv[2:]
     b = pcbnew.LoadBoard(PCB)
-    {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'fixups': fixups, 'relock': relock}[cmd](b, *args)
+    {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'silk': silk, 'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock}[cmd](b, *args)
     if cmd != 'dsn':
         pcbnew.SaveBoard(PCB, b)
     print(cmd, 'ok: tracks', len(b.GetTracks()), 'zones', len(list(b.Zones())))
