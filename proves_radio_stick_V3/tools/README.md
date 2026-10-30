@@ -7,6 +7,7 @@ needed for the routing step.
 | Step | Command (from `proves_radio_stick_V3/`) | What it does |
 |---|---|---|
 | 1. Schematic | `python3 tools/gen_v3_schematic.py` | Builds the V3 schematic from V2: MCU block, decoupling, crystals, buttons, STDC14, USB ESD, LEDs, pull-ups |
+| 1b. Sheet layout | `python3 tools/tidy_v3_schematic.py` | Moves each block to its place on the A3 sheet (power row on top, then MCU support, MCU, radio, connectors), draws titled frames, adds design notes and fills the title block. Moves whole connected clusters only, keeps every UUID and net; refuses to run twice. Check: the `kicad-cli sch export netlist` output must not change |
 | 2. Netlist | `kicad-cli sch export netlist --format kicadxml -o v3.net.xml proves_radio_stick_V3.kicad_sch` | |
 | 3. Sync + place | start from V2's board, then `cd tools && python3 sync_v3_pcb.py ../v3.net.xml` | "Update PCB from schematic", clears the RP2350 island, places parts from `v3_placement.py` |
 | 4. Prep | `kicad-cli pcb drc --format json -o drc0.json proves_radio_stick_V3.kicad_pcb` then `python3 tools/route_v3.py prep drc0.json <V2 board>` | Drops dangling V2 stubs, restores V2's VBUS run, pre-routes U4's VBUS feed, adds island pours, locks power/RF copper |
