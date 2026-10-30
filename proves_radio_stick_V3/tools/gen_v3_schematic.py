@@ -2,7 +2,7 @@
 """Generate the V3 schematic from the V2 schematic.
 
 Removes the RP2350 / QSPI flash / 12 MHz crystal / 1V1 / BOOTSEL circuitry
-from V2 and adds the STM32U585 block, wired by labels to the unchanged radio,
+from V2 and adds the STM32U575VIT6 (LQFP-100) block, wired by labels to the unchanged radio,
 power, USB-C and connector sections. Pin assignments come from
 ../pinmap/pinmap.csv.
 
@@ -15,7 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 V3 = os.path.dirname(HERE)
 V2_SCH = os.path.join(V3, '..', 'proves_radio_stick_V2', 'proves_radio_stick_V2.kicad_sch')
 OUT = os.path.join(V3, 'proves_radio_stick_V3.kicad_sch')
-KICAD_SYM = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols'
+KICAD_SYM = os.environ.get('KICAD_SYMBOL_DIR', '/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols')
 PROJECT = 'proves_radio_stick_V3'
 
 # ---------------------------------------------------------------- s-expr
@@ -151,7 +151,7 @@ def lib_symbol_from(libfile, name, new_name=None):
     s[1] = q(libfile + ':' + name)
     return s
 
-for libfile, name in [('MCU_ST_STM32U5', 'STM32U585CIUx'), ('Device', 'Crystal'),
+for libfile, name in [('MCU_ST_STM32U5', 'STM32U575VITx'), ('Device', 'Crystal'),
                       ('Connector_Generic', 'Conn_02x07_Odd_Even'),
                       ('Power_Protection', 'USBLC6-2SC6')]:
     libsyms.append(lib_symbol_from(libfile, name))
@@ -291,36 +291,47 @@ def cap(ref, val, lcsc, x, y, top, bot='P:GND'):
     part('Device:C', ref, val, x, y, fp=C0402, lcsc=lcsc, nets={'1': top, '2': bot})
 
 def res(ref, val, x, y, top, bot):
-    part('Device:R', ref, val, x, y, fp=R0402, lcsc='C25744' if val == '10k' else '',
+    part('Device:R', ref, val, x, y, fp=R0402, lcsc={'10k': 'C25744', '1k': 'C11702', '4.7k': 'C25900'}[val],
          nets={'1': top, '2': bot})
 
-# ---------------------------------------------------------------- STM32U585
+# ---------------------------------------------------------------- STM32U575
 
+MCU = 'MCU_ST_STM32U5:STM32U575VITx'
 LOCAL = {'OSC_IN', 'OSC_OUT', 'OSC32_IN', 'OSC32_OUT', 'BOOT0', 'USER_BTN', 'VCAP'}
-PIN_NUM = {}
-for sub in find(LIB['MCU_ST_STM32U5:STM32U585CIUx'], 'symbol'):
+PIN_NUM, PIN_NAME = {}, {}
+for sub in find(LIB[MCU], 'symbol'):
     for p in find(sub, 'pin'):
-        PIN_NUM.setdefault(unq(get(p, 'name')[1]), unq(get(p, 'number')[1]))
+        name, number = unq(get(p, 'name')[1]), unq(get(p, 'number')[1])
+        PIN_NUM.setdefault(name, number)
+        PIN_NAME[number] = name
 
 mcu_nets = {}
 with open(os.path.join(V3, 'pinmap', 'pinmap.csv')) as f:
     for row in csv.DictReader(f):
         net = row['net']
-        net = {'USART1_TX': 'TX', 'USART1_RX': 'RX', 'SWO': 'SWO'}.get(net, net)
+        net = {'USART1_TX': 'TX', 'USART1_RX': 'RX'}.get(net, net)
         mcu_nets[PIN_NUM[row['pin']]] = ('L:' if net in LOCAL else 'G:') + net
-mcu_nets['7'] = 'G:~{RESET}'
-mcu_nets['22'] = 'L:VCAP'
 
-UX, UY = 119.38, 101.6
-ends = part('MCU_ST_STM32U5:STM32U585CIUx', 'U1', 'STM32U585CIU6', UX, UY,
-            fp='Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm_ThermalVias',
-            lcsc='C5271026', ds='https://www.st.com/resource/en/datasheet/stm32u585ci.pdf',
-            ref_at=(UX + 5.08, UY + 43.18), val_at=(UX + 5.08, UY + 45.72),
-            nets={**mcu_nets, **{n: None for n in ('1', '9', '24', '36', '48', '8', '23', '35', '47', '49')}})
+SUPPLY = [n for n, v in PIN_NAME.items() if v in ('VDD', 'VDDA', 'VDDUSB', 'VBAT')]
+GROUND = [n for n, v in PIN_NAME.items() if v in ('VSS', 'VSSA')]
+mcu_nets[PIN_NUM['NRST']] = 'G:~{RESET}'
+mcu_nets[PIN_NUM['VCAP']] = 'L:VCAP'
+mcu_nets[PIN_NUM['VREF+']] = 'P:+3V3'
+mcu_nets[PIN_NUM['VREF-']] = 'P:GND'
+for n in PIN_NAME:  # every I/O the pin map leaves free gets a no-connect flag
+    if n not in mcu_nets and n not in SUPPLY and n not in GROUND:
+        mcu_nets[n] = 'NC'
 
-# Supply pins: VBAT, VDD x3 and VDDA share one +3V3 bus above the chip.
-top = sorted({ends[n][0] for n in ('1', '24', '36', '48', '9')})
-ty = ends['1'][1]; by = ty - 5.08
+UX, UY = 110.49, 106.68
+ends = part(MCU, 'U1', 'STM32U575VIT6', UX, UY,
+            fp='Package_QFP:LQFP-100_14x14mm_P0.5mm',
+            lcsc='C5270999', ds='https://www.st.com/resource/en/datasheet/stm32u575vi.pdf',
+            ref_at=(UX + 20.32, UY + 69.85), val_at=(UX + 20.32, UY + 72.39),
+            nets={**mcu_nets, **{n: None for n in SUPPLY + GROUND}})
+
+# Supply pins: VBAT, VDD x5, VDDA and VDDUSB share one +3V3 bus above the chip.
+top = sorted({ends[n][0] for n in SUPPLY})
+ty = ends[SUPPLY[0]][1]; by = ty - 5.08
 for x in top:
     wire(x, ty, x, by)
 for a, b in zip(top, top[1:]):
@@ -329,58 +340,74 @@ for x in top[:-1]:
     junction(x, by)
 wire(top[0] - 5.08, by, top[0], by)
 power('+3V3', top[0] - 5.08, by, (0, -1))
-# Ground pins: VSS x3 + EP stack on one pin position, VSSA beside it.
-bot = sorted({ends[n][0] for n in ('23', '8')})
-gy = ends['23'][1]; gb = gy + 5.08
+# Ground pins: VSS x5 stack on one pin position, VSSA beside it.
+bot = sorted({ends[n][0] for n in GROUND})
+gy = ends[GROUND[0]][1]; gb = gy + 5.08
 for x in bot:
     wire(x, gy, x, gb)
-wire(bot[0], gb, bot[1], gb)
+wire(bot[0], gb, bot[-1], gb)
 power('GND', bot[0], gb, (0, 1))
 
-# Decoupling (place each cap at its pin in layout).
-text('STM32U585 decoupling', 55.88, 19.05)
-text('C101-C103 at VDD 24/36/48, C105 at VBAT, C106/C107 at VDDA, C108 at VCAP', 55.88, 41.91, 1.27)
+# Decoupling per AN5373: 100 nF at each VDD pair + 4.7 uF bulk, 1 uF + 100 nF on
+# VDDA and VREF+, 100 nF on VDDUSB and VBAT, 4.7 uF on VCAP (LDO part), 100 nF NRST.
+text('STM32U575 decoupling (place each cap at its pin in layout)', 17.78, 17.78)
+text('C101-C105 VDD 11/28/50/75/100, C106 VDDUSB 73, C107 bulk, C108 VBAT 6, '
+     'C109/C110 VDDA 22, C111/C112 VREF+ 21, C113 VCAP 48, C114 NRST 14', 17.78, 50.8, 1.27)
 DEC = [('C101', '100n', 'C1525', 'P:+3V3'), ('C102', '100n', 'C1525', 'P:+3V3'),
-       ('C103', '100n', 'C1525', 'P:+3V3'), ('C104', '4.7u', 'C23733', 'P:+3V3'),
-       ('C105', '100n', 'C1525', 'P:+3V3'), ('C106', '1u', 'C52923', 'P:+3V3'),
-       ('C107', '100n', 'C1525', 'P:+3V3'), ('C108', '4.7u', 'C23733', 'L:VCAP'),
-       ('C109', '100n', 'C1525', 'G:~{RESET}')]
+       ('C103', '100n', 'C1525', 'P:+3V3'), ('C104', '100n', 'C1525', 'P:+3V3'),
+       ('C105', '100n', 'C1525', 'P:+3V3'), ('C106', '100n', 'C1525', 'P:+3V3'),
+       ('C107', '4.7u', 'C23733', 'P:+3V3'), ('C108', '100n', 'C1525', 'P:+3V3'),
+       ('C109', '1u', 'C52923', 'P:+3V3'), ('C110', '100n', 'C1525', 'P:+3V3'),
+       ('C111', '1u', 'C52923', 'P:+3V3'), ('C112', '100n', 'C1525', 'P:+3V3'),
+       ('C113', '4.7u', 'C23733', 'L:VCAP'), ('C114', '100n', 'C1525', 'G:~{RESET}')]
 for i, (ref, val, lcsc, topnet) in enumerate(DEC):
-    cap(ref, val, lcsc, 60.96 + 12.7 * i, 31.75, topnet)
+    cap(ref, val, lcsc, 20.32 + 10.16 * (i % 7), 27.94 + 15.24 * (i // 7), topnet)
 
-text('STM32U585CIU6', 106.68, 49.53)
+text('STM32U575VIT6 (LQFP-100, pin-compatible with STM32U5A5VJT6)', 93.98, 22.86)
 
 # HSE 16 MHz (CL 9 pF -> 12 pF load caps).
-text('HSE 16 MHz', 25.4, 52.07)
-part('Device:Crystal_GND24', 'Y101', '16MHz', 40.64, 62.23,
+text('HSE 16 MHz', 25.4, 62.23)
+part('Device:Crystal_GND24', 'Y101', '16MHz', 40.64, 72.39,
      fp='Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm', lcsc='C13738',
-     ref_at=(46.99, 66.04), val_at=(46.99, 68.58),
+     ref_at=(46.99, 76.20), val_at=(46.99, 78.74),
      nets={'1': 'L:OSC_IN', '3': 'L:OSC_OUT', '2': 'P:GND', '4': 'P:GND'})
-cap('C110', '12p', 'C1547', 30.48, 77.47, 'L:OSC_IN')
-cap('C111', '12p', 'C1547', 50.8, 77.47, 'L:OSC_OUT')
+cap('C115', '12p', 'C1547', 30.48, 87.63, 'L:OSC_IN')
+cap('C116', '12p', 'C1547', 50.8, 87.63, 'L:OSC_OUT')
 
 # LSE 32.768 kHz (CL 7 pF -> 10 pF load caps).
-text('LSE 32.768 kHz', 25.4, 91.44)
-part('Device:Crystal', 'Y102', '32.768kHz', 40.64, 99.06,
+text('LSE 32.768 kHz', 25.4, 101.60)
+part('Device:Crystal', 'Y102', '32.768kHz', 40.64, 109.22,
      fp='Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm', lcsc='C97604',
-     ref_at=(36.83, 104.14), val_at=(36.83, 106.68),
+     ref_at=(36.83, 114.30), val_at=(36.83, 116.84),
      nets={'1': 'L:OSC32_IN', '2': 'L:OSC32_OUT'})
-cap('C112', '10p', 'C32949', 30.48, 111.76, 'L:OSC32_IN')
-cap('C113', '10p', 'C32949', 50.8, 111.76, 'L:OSC32_OUT')
+cap('C117', '10p', 'C32949', 30.48, 121.92, 'L:OSC32_IN')
+cap('C118', '10p', 'C32949', 50.8, 121.92, 'L:OSC32_OUT')
 
 # BOOT0 button (ROM USB DFU) and user button (PC13 / WKUP2).
 SW = 'Adafruit ItsyBitsy RP2040-eagle-import:SWITCH_TACT_SMT4.6X2.8'
 SWFP = 'FC_DEV_BOARD:BTN_KMR2_4.6X2.8'
-text('BOOT0 (hold + reset = USB DFU)', 25.4, 125.73)
-part(SW, 'SW1', 'KMR2', 40.64, 134.62, fp=SWFP, lcsc='C72443',
+text('BOOT0 (hold + reset = USB DFU)', 25.4, 135.89)
+part(SW, 'SW1', 'KMR2', 40.64, 144.78, fp=SWFP, lcsc='C72443',
      nets={'A': 'U:+3V3', "A'": None, 'B': 'L:BOOT0', "B'": None},
-     ties=(('A', "A'"), ('B', "B'")), ref_at=(35.56, 130.81), val_at=(41.91, 130.81))
-res('R101', '10k', 60.96, 139.7, 'L:BOOT0', 'P:GND')
-text('User button', 25.4, 151.13)
-part(SW, 'SW3', 'KMR2', 40.64, 160.02, fp=SWFP, lcsc='C72443',
+     ties=(('A', "A'"), ('B', "B'")), ref_at=(35.56, 140.97), val_at=(41.91, 140.97))
+res('R101', '10k', 60.96, 149.86, 'L:BOOT0', 'P:GND')
+text('User button', 25.4, 161.29)
+part(SW, 'SW3', 'KMR2', 40.64, 170.18, fp=SWFP, lcsc='C72443',
      nets={'A': 'U:GND', "A'": None, 'B': 'L:USER_BTN', "B'": None},
-     ties=(('A', "A'"), ('B', "B'")), ref_at=(35.56, 156.21), val_at=(41.91, 156.21))
-res('R102', '10k', 60.96, 165.1, 'P:+3V3', 'L:USER_BTN')
+     ties=(('A', "A'"), ('B', "B'")), ref_at=(35.56, 166.37), val_at=(41.91, 166.37))
+res('R102', '10k', 60.96, 175.26, 'P:+3V3', 'L:USER_BTN')
+
+
+# Second LED for user code (the QFN-48 build had no pin for it).
+text('User LED', 162.56, 135.89)
+res('R103', '1k', 167.64, 147.32, 'G:USER_LED', 'L:LED2_A')
+part('Device:LED', 'D2', 'LED', 177.8, 147.32, rot=90, fp='LED_SMD:LED_0603_1608Metric', lcsc='C2290',
+     nets={'2': 'L:LED2_A', '1': 'P:GND'})
+
+# I2C3 on J3 (J3_IO3 SCL, J3_IO4 SDA) gets pull-ups so a bare sensor works.
+text('J3 I2C3 pull-ups', 162.56, 161.29)
+res('R104', '4.7k', 167.64, 172.72, 'P:+3V3', 'G:J3_IO3')
+res('R105', '4.7k', 180.34, 172.72, 'P:+3V3', 'G:J3_IO4')
 
 # STDC14 debug header (STLINK-V3MINIE). Pins 3-12 are the MIPI-10 layout.
 text('Debug: STDC14 (STLINK-V3MINIE)', 162.56, 49.53)
@@ -440,7 +467,7 @@ libsyms[:] = [e for e in libsyms if not (isinstance(e, list) and e[0] == 'symbol
 
 tb = ['title_block', ['title', '"PROVES Radio Stick V3"'], ['date', '"2026-09-26"'],
       ['rev', '"3.0"'], ['company', '"PROVES Kit / Open Source Space Foundation"'],
-      ['comment', '1', '"STM32U585CIU6 + EByte E22-400M30S"']]
+      ['comment', '1', '"STM32U575VIT6 (LQFP-100) + EByte E22-400M30S"']]
 old_tb = get(t, 'title_block')
 if old_tb:
     t.remove(old_tb)
