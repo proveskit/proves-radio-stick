@@ -31,8 +31,9 @@ def route(b, net, a, z, width, ignore=()):
     if to_plane:
         z = (a[0], a[1], '*')
     (ax, ay, al), (zx, zy, zl) = a, z
-    x0, x1 = min(ax, zx) - 3, max(ax, zx) + 3
-    y0, y1 = min(ay, zy) - 3, max(ay, zy) + 3
+    m = 5 if to_plane else 3          # search margin around the end points, mm
+    x0, x1 = min(ax, zx) - m, max(ax, zx) + m
+    y0, y1 = min(ay, zy) - m, max(ay, zy) + m
     box = pcbnew.BOX2I(P(x0 - 2, y0 - 2), P(x1 - x0 + 4, y1 - y0 + 4))
     others = []
     for t in b.GetTracks():
@@ -87,7 +88,19 @@ def route(b, net, a, z, width, ignore=()):
     si, sj = cell(ax, ay); gi, gj = cell(zx, zy)
     starts = [0, 1] if al == '*' else [0 if al == 'F' else 1]
     goals = {0, 1} if zl == '*' else {0 if zl == 'F' else 1}
-    near = lambda i, j, ci, cj: abs(i - ci) <= 6 and abs(j - cj) <= 6   # inside the pad itself
+    # Cells inside the end pads themselves skip the clearance test (the pad is ours).
+    def end_pad(x, y):
+        return [p for f in b.GetFootprints() for p in f.Pads()
+                if p.GetNetname() == net and p.HitTest(P(x, y), 0)]
+    pads_a, pads_z = end_pad(ax, ay), end_pad(zx, zy)
+    def in_pads(pads, i, j):
+        pt = P(x0 + i * G, y0 + j * G)
+        return any(p.HitTest(pt, 0) for p in pads)
+    def near(i, j, ci, cj):
+        pads = pads_a if (ci, cj) == (si, sj) else pads_z
+        if pads:
+            return in_pads(pads, i, j)
+        return abs(i - ci) <= 1 and abs(j - cj) <= 1     # a track end: just the end cell
     h = (lambda i, j: 0.0) if to_plane else (lambda i, j: math.hypot(i - gi, j - gj))
     pq = [(h(si, sj), 0.0, si, sj, l) for l in starts]
     prev = {(si, sj, l): None for l in starts}
@@ -159,6 +172,8 @@ def commit(b, net, path, width):
 def end_of(item):
     """(x, y, layer) for a DRC unconnected item, or None for zones."""
     d = item['description']
+    if d.startswith('Zone'):
+        return None
     x, y = item['pos']['x'], item['pos']['y']
     if d.startswith('PTH pad') or d.startswith('Via'):
         return x, y, '*'
@@ -168,9 +183,20 @@ def end_of(item):
         return x, y, 'B'
     return None
 
+def drop_dangling(b, drc_path):
+    """Delete the tracks and vias DRC calls dangling (left over from rip-ups)."""
+    import json
+    stale = {i['uuid'] for v in json.load(open(drc_path))['violations']
+             if v['type'] in ('track_dangling', 'via_dangling') for i in v['items']}
+    for t in list(b.GetTracks()):
+        if t.m_Uuid.AsString() in stale:
+            b.Delete(t)
+    return len(stale)
+
 def close_from_drc(path):
     import json
     b = pcbnew.LoadBoard(PCB)
+    print('dropped dangling', drop_dangling(b, path))
     widths = {nc: b.GetDesignSettings().m_NetSettings.GetNetClassByName(nc).GetTrackWidth() / MM
               for nc in ('Default', 'PWR3V3', 'PWR5V', 'USB')}
     for u in json.load(open(path))['unconnected_items']:
