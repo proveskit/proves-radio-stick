@@ -29,7 +29,7 @@ is outside the E22-400's 410–493 MHz band. Use the app below instead.
 | Probe | Connector | Command |
 |---|---|---|
 | STLINK-V3MINIE | J5 (STDC14) | `west flash` (STM32CubeProgrammer) or `west flash -r openocd` |
-| Raspberry Pi Debug Probe / any CMSIS-DAP | J22 (JST-SH) | `west flash -r pyocd` (first `pyocd pack install stm32u585ciux`) or `west flash -r openocd --config <board>/support/openocd-cmsis-dap.cfg` |
+| Raspberry Pi Debug Probe / any CMSIS-DAP | J22 (JST-SH) | `west flash -r pyocd` (first `pyocd pack install stm32u575vitx`) or `west flash -r openocd --config <board>/support/openocd-cmsis-dap.cfg` |
 | None (USB ROM bootloader) | USB-C | Hold **BOOT0** (SW1), tap **RESET** (SW2), release, then `west flash -r dfu-util` |
 
 J22 has no NRST line. If firmware has disabled SWD or sits in Stop/Standby,
