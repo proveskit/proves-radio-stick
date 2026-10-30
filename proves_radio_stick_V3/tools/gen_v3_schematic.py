@@ -109,6 +109,31 @@ for e in t:
     body.append(e)
 t[:] = body
 
+# Parts the LQFP-100 island has no room for (layout review r1): the J4 header
+# (its UART/3V3/GND are on the STDC14) with the I2C1 pull-ups R39/R41 that only
+# served it, and the R7/R8 USB series links (the MCU needs none).
+DROP_REFS = {'J4', 'R39', 'R41', 'R7', 'R8'}
+DROP_BOXES = [(360, 205, 395, 235), (110, 188, 132, 215), (70, 205, 92, 215)]
+t[:] = [e for e in t if not (isinstance(e, list) and (
+    (e[0] == 'symbol' and ref_of(e) in DROP_REFS) or
+    (e[0] in ('label', 'global_label', 'junction', 'no_connect') and inr(*at_of(e), DROP_BOXES)) or
+    (e[0] == 'symbol' and unq(get(e, 'lib_id')[1]).startswith('power:') and inr(*at_of(e), DROP_BOXES[:2])) or
+    (e[0] == 'wire' and any(inr(float(p[1]), float(p[2]), DROP_BOXES) for p in find(get(e, 'pts'), 'xy')))))]
+# J12's USB_D-/USB_D+ labels now carry the pair straight to the MCU: trim the
+# stubs that ran on to R7/R8 so they end on the labels.
+for w in find(t, 'wire'):
+    pts = find(get(w, 'pts'), 'xy')
+    for pt in pts:
+        if (float(pt[1]), float(pt[2])) in ((67.31, 209.55), (67.31, 212.09)):
+            pt[1] = '66.04'
+
+# Radio-driven BUSY/DIO1 pull-ups back-power the switched-off E22 (EE review
+# r1), and the Keystone test points were never fitted: mark them DNP.
+for sym in find(t, 'symbol'):
+    if ref_of(sym) in {'R14', 'R15'} | {'TP%d' % i for i in range(1, 8)}:
+        get(sym, 'dnp')[1] = 'yes'
+        get(sym, 'in_bom')[1] = 'no'
+
 # J3 breakout nets are renamed after the STM32 pins behind them.
 J3_RENAME = {'GPIO%d' % (22 + i): 'J3_IO%d' % (1 + i) for i in range(8)}
 for e in find(t, 'global_label'):
@@ -122,11 +147,7 @@ def set_prop(sym, name, value):
     x, y = at_of(sym)
     sym.append(['property', q(name), q(value), ['at', num(x), num(y), '0'], hidden()])
 
-# USB series resistors: STM32 OTG_FS needs none, so R7/R8 become 0R links.
 for sym in find(t, 'symbol'):
-    if ref_of(sym) in ('R7', 'R8'):
-        set_prop(sym, 'Value', '0')
-        set_prop(sym, 'LCSC Part', 'C17168')
     # Same TPS62085 die on the larger reel, which JLC stocks in quantity.
     if ref_of(sym) == 'U2':
         set_prop(sym, 'Value', 'TPS62085RLTR')
@@ -351,8 +372,8 @@ power('GND', bot[0], gb, (0, 1))
 # Decoupling per AN5373: 100 nF at each VDD pair + 4.7 uF bulk, 1 uF + 100 nF on
 # VDDA and VREF+, 100 nF on VDDUSB and VBAT, 4.7 uF on VCAP (LDO part), 100 nF NRST.
 text('STM32U575 decoupling (place each cap at its pin in layout)', 17.78, 17.78)
-text('C101-C105 VDD 11/28/50/75/100, C106 VDDUSB 73, C107 bulk, C108 VBAT 6, '
-     'C109/C110 VDDA 22, C111/C112 VREF+ 21, C113 VCAP 48, C114 NRST 14', 17.78, 50.8, 1.27)
+text('C101-C105 VDD 11/28/50/75/100, C106 VDDUSB 73, C107 bulk, C108 VBAT 6,', 17.78, 53.34, 1.27)
+text('C109/C110 VDDA 22, C111/C112 VREF+ 21, C113 VCAP 48, C114 NRST 14', 17.78, 55.88, 1.27)
 DEC = [('C101', '100n', 'C1525', 'P:+3V3'), ('C102', '100n', 'C1525', 'P:+3V3'),
        ('C103', '100n', 'C1525', 'P:+3V3'), ('C104', '100n', 'C1525', 'P:+3V3'),
        ('C105', '100n', 'C1525', 'P:+3V3'), ('C106', '100n', 'C1525', 'P:+3V3'),
@@ -429,7 +450,7 @@ junction(jx - 2.54, y7)
 wire(jx - 2.54, y7, jx - 7.62, y7)
 power('GND', jx - 7.62, y7, (-1, 0))
 
-# USB ESD on the connector side of R7/R8.
+# USB ESD on the D+/D- pair between J12 and the MCU.
 text('USB ESD', 162.56, 97.79)
 part('Power_Protection:USBLC6-2SC6', 'U4', 'USBLC6-2SC6', 180.34, 111.76, stub=5.08,
      ref_at=(182.88, 104.14), val_at=(182.88, 121.92),
