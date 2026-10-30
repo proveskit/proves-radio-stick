@@ -1,6 +1,7 @@
 (footprint "BTN_KMR2_4.6X2.8" (version 20211014) (generator pcbnew)
   (layer "F.Cu")
   (tedit 0)
+  (jumper_pad_groups ("A" "A'") ("B" "B'"))
   (fp_text reference "REF**" (at -2.032 -1.778) (layer "F.SilkS")
     (effects (font (size 0.666496 0.666496) (thickness 0.146304)) (justify left bottom))
     (tstamp ccb2dfae-3c05-4080-9034-2f970d0a5235)
@@ -34,4 +35,5 @@
     (solder_mask_margin 0.0508) (tstamp 7f13b66f-4d0b-49b0-9d91-b1237f9d04ba))
   (pad "B'" smd rect (at -2.05 0.8) (size 0.9 0.9) (layers "F.Cu" "F.Paste" "F.Mask")
     (solder_mask_margin 0.0508) (tstamp 94841247-5f41-4bb8-9712-27af358f3408))
+  (fp_rect (start -2.65 -1.6) (end 2.65 1.6) (layer "F.CrtYd") (width 0.05) (fill none))
 )

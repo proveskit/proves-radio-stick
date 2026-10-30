@@ -45,9 +45,11 @@ def load(fpid):
 
 # ------------------------------------------------------------------ footprints
 KEEP_UNLISTED = ('G***', 'H1', 'H2', 'H3', 'H4')
+# Library footprints changed for V3 (KMR2: courtyard, A-A'/B-B' jumper groups).
+RELOAD = {'FC_DEV_BOARD:BTN_KMR2_4.6X2.8'}
 have = {f.GetReference(): f for f in b.GetFootprints()}
 fresh = {ref: load(c['fp']) for ref, c in comps.items()
-         if ref not in have or have[ref].GetFPIDAsString() != c['fp']}
+         if ref not in have or have[ref].GetFPIDAsString() != c['fp'] or c['fp'] in RELOAD}
 for ref in list(have):
     if ref not in comps and ref not in KEEP_UNLISTED:
         b.Delete(have.pop(ref))
