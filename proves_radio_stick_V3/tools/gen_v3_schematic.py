@@ -432,7 +432,7 @@ res('R105', '4.7k', 180.34, 172.72, 'P:+3V3', 'G:J3_IO4')
 
 # STDC14 debug header (STLINK-V3MINIE). Pins 3-12 are the MIPI-10 layout.
 text('Debug: STDC14 (STLINK-V3MINIE)', 162.56, 49.53)
-text('Pins 13/14 = T_VCP_RX/T_VCP_TX (target RX/TX). J4 shares USART1.', 162.56, 80.01, 1.27)
+text('Pins 13/14 = T_VCP_RX/T_VCP_TX (target RX/TX).', 162.56, 80.01, 1.27)
 part('Connector_Generic:Conn_02x07_Odd_Even', 'J5', 'STDC14', 180.34, 64.77,
      fp='Connector_PinHeader_1.27mm:PinHeader_2x07_P1.27mm_Vertical', lcsc='C22438122',
      ref_at=(177.8, 53.34), val_at=(184.15, 53.34),
@@ -498,6 +498,8 @@ t.insert(idx, tb)
 si = t.index(get(t, 'sheet_instances'))
 t[si:si] = new
 
-open(OUT, 'w').write(dump(t) + '\n')
+# V2 notes that name RP2350 pins.
+out = dump(t).replace('(firmware enables via GPIO18)', '(firmware enables via PE2)')
+open(OUT, 'w').write(out + '\n')
 print('removed:', ' '.join(sorted(r for r in removed if not r.startswith('#'))))
 print('added %d items -> %s' % (len(new), OUT))
