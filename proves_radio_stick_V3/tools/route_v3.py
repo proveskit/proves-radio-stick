@@ -10,7 +10,7 @@
 
 Run with KiCad 10 python; edits ../proves_radio_stick_V3.kicad_pcb in place.
 """
-import json, os, sys
+import json, os, re, sys
 import pcbnew
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -410,6 +410,50 @@ def silk(b):
         if ref[0] in 'CRY' and ISLAND[0] <= x <= ISLAND[2] and ISLAND[1] <= y <= ISLAND[3]:
             f.Reference().SetVisible(False)
 
+PERSONALITY = ("1 2 3 4 5 6 7 . . . How many more days until the weekend?\n"
+               "1 2 3 What's the fee for the damage? \nNow I'm in the studio looking at your image . . .")
+
+def skill_silk(b):
+    """proves-pcb-design silk rules. Idempotent."""
+    texts = {d.GetText(): d for d in b.GetDrawings() if d.GetClass() == 'PCB_TEXT'}
+    name = next(t for k, t in texts.items() if k.startswith('PROVES Radio Stick V3'))
+    name.SetText('PROVES Radio Stick V3\nSTM32U575VIT6, C. Oct 30, 2026')
+    def add(text, x, y, size):
+        if text in texts:
+            return
+        t = name.Duplicate()
+        t.SetText(text)
+        t.SetTextSize(pcbnew.VECTOR2I(int(size * MM), int(size * MM)))
+        t.SetTextThickness(int(0.15 * MM))
+        t.SetPosition(P(x, y))
+        b.Add(t)
+    # V2's personality silk sat where the MCU island is now; it moves under the E22.
+    add(PERSONALITY, 191.5, 101.2, 0.8)
+    add('JLCJLCJLCJLC', 184.0, 113.6, 1.0)    # JLC order-number placeholder
+    # J2 and J22 refs have no room inside the edge (E22 and U1 fill the space next to them).
+    for ref, show in (('J3', True), ('J5', True), ('J12', True), ('U4', False)):
+        b.FindFootprintByReference(ref).Reference().SetVisible(show)
+
+def fields(b, net_xml):
+    """Copy Value and MPN from the exported schematic netlist onto the footprints."""
+    import xml.etree.ElementTree as ET
+    for c in ET.parse(net_xml).getroot().iter('comp'):
+        f = b.FindFootprintByReference(c.get('ref'))
+        if f is None:
+            continue
+        f.SetValue(c.findtext('value'))
+        for k, v in {x.get('name'): x.text for x in c.iter('field')}.items():
+            if k in ('MPN', 'LCSC Part') and v:
+                f.SetField(k, v)
+                f.GetField(k).SetVisible(False)
+
+def stackup_text(path):
+    """JLC04161H-7628: both inner layers 0.5 oz (0.0152 mm), ENIG. pcbnew's Python has no stackup API."""
+    s = open(path).read()
+    s = re.sub(r'(\(layer "In2.Cu"\s*\(type "copper"\)\s*\(thickness )0.035\)', r'\g<1>0.0152)', s)
+    s = s.replace('(copper_finish "None")', '(copper_finish "ENIG")')
+    open(path, 'w').write(s)
+
 def finish(b):
     silk(b)
     drop_dead_ends(b)
@@ -426,7 +470,10 @@ def finish(b):
 if __name__ == '__main__':
     cmd, args = sys.argv[1], sys.argv[2:]
     b = pcbnew.LoadBoard(PCB)
-    {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'silk': silk, 'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock}[cmd](b, *args)
+    {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'silk': silk, 'skill': lambda b, net_xml: (skill_silk(b), fields(b, net_xml)),
+     'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock}[cmd](b, *args)
     if cmd != 'dsn':
         pcbnew.SaveBoard(PCB, b)
+    if cmd == 'skill':
+        stackup_text(PCB)
     print(cmd, 'ok: tracks', len(b.GetTracks()), 'zones', len(list(b.Zones())))
