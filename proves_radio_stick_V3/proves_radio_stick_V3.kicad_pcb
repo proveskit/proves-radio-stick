@@ -13493,12 +13493,12 @@
 		(descr "Terminal Block Phoenix MPT-0,5-10-2.54, 10 pins, pitch 2.54mm, size 25.9x6.2mm, drill diameter 1.1mm, pad diameter 2.2mm, http://www.mouser.com/ds/2/324/ItemDetail_1725672-916605.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MPT-0,5-10-2.54 pitch 2.54mm size 25.9x6.2mm drill 1.1mm pad 2.2mm")
 		(property "Reference" "J3"
-			(at 11.43 -4.22 0)
+			(at -3.04 0 90)
 			(layer "F.SilkS")
 			(uuid "c19a26c0-61f4-4dc0-9d5b-6298a9d12ed5")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -16159,12 +16159,12 @@
 		(descr "USB Type-C receptacle for USB 2.0 and PD, http://www.krhro.com/uploads/soft/180320/1-1P320120243.pdf")
 		(tags "usb usb-c 2.0 pd")
 		(property "Reference" "J12"
-			(at 0 -5.645 90)
+			(at 6.69 1.52 0)
 			(layer "F.SilkS")
 			(uuid "63dd6525-a55a-4e6e-85b1-8bb1e56f9fa6")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -25870,6 +25870,39 @@
 		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "049906fa-e2a3-4e09-b0da-cfe3b0edd5c3")
+	)
+	(gr_text "ANT"
+		(at 169.2 94.2 0)
+		(layer "F.SilkS")
+		(uuid "d654db42-bda6-4ee1-ac15-bb0a61d52e79")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "SWD"
+		(at 233.56 96.3 0)
+		(layer "F.SilkS")
+		(uuid "510c42df-20fb-40e0-9ab4-6b348e286070")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "USB"
+		(at 243 105.6 0)
+		(layer "F.SilkS")
+		(uuid "43a9496a-475d-4fbd-86c4-7081c21504ea")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
 	)
 	(gr_text "RF_RST"
 		(at 202.72 87.6 0)

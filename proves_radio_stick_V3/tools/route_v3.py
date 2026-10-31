@@ -7,6 +7,7 @@
   python3 route_v3.py dsn <out.dsn>     export Specctra DSN (outer GND pours left out)
   python3 route_v3.py ses <in.ses>      import the routed session and refill zones
   python3 route_v3.py finish            hand tracks, GND stitching vias, refill
+  python3 route_v3.py readable          front silk names: ANT, USB, SWD; move the J12 and J3 refs
 
 Run with KiCad 10 python; edits ../proves_radio_stick_V3.kicad_pcb in place.
 """
@@ -434,6 +435,29 @@ def skill_silk(b):
     for ref, show in (('J3', True), ('J5', True), ('J12', True), ('U4', False)):
         b.FindFootprintByReference(ref).Reference().SetVisible(show)
 
+def readable_silk(b):
+    """Front-side names for what a newcomer plugs in or probes (graphic design review). Idempotent."""
+    texts = {d.GetText(): d for d in b.GetDrawings() if d.GetClass() == 'PCB_TEXT' and d.GetLayer() == pcbnew.F_SilkS}
+    def add(text, x, y):
+        t = texts.get(text) or pcbnew.PCB_TEXT(b)
+        t.SetText(text)
+        t.SetLayer(pcbnew.F_SilkS)
+        t.SetTextSize(pcbnew.VECTOR2I(int(0.8 * MM), int(0.8 * MM)))
+        t.SetTextThickness(int(0.15 * MM))
+        t.SetPosition(P(x, y))
+        if text not in texts:
+            b.Add(t)
+    add('ANT', 169.2, 94.2)      # under the SMA
+    add('USB', 243.0, 105.6)     # under the USB-C
+    add('SWD', 233.56, 96.3)     # under the J5 ref
+    # J12 sat between U4 and the USB-C pads and read as U4's ref; J3 sat by D3, 5 mm off the block.
+    for ref, x, y, angle in (('J12', 243.0, 92.2, 0), ('J3', 211.6, 113.5, 90)):
+        r = b.FindFootprintByReference(ref).Reference()
+        r.SetVisible(True)
+        r.SetPosition(P(x, y))
+        r.SetTextAngleDegrees(angle)
+        r.SetTextSize(pcbnew.VECTOR2I(int(0.8 * MM), int(0.8 * MM)))
+
 def fields(b, net_xml):
     """Copy Value and MPN from the exported schematic netlist onto the footprints."""
     import xml.etree.ElementTree as ET
@@ -471,7 +495,7 @@ if __name__ == '__main__':
     cmd, args = sys.argv[1], sys.argv[2:]
     b = pcbnew.LoadBoard(PCB)
     {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'silk': silk, 'skill': lambda b, net_xml: (skill_silk(b), fields(b, net_xml)),
-     'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock}[cmd](b, *args)
+     'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock, 'readable': readable_silk}[cmd](b, *args)
     if cmd != 'dsn':
         pcbnew.SaveBoard(PCB, b)
     if cmd == 'skill':
