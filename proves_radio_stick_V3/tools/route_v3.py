@@ -8,7 +8,7 @@
   python3 route_v3.py ses <in.ses>      import the routed session and refill zones
   python3 route_v3.py finish            hand tracks, GND stitching vias, refill
   python3 route_v3.py readable          front silk names: ANT, USB, SWD; move the J12 and J3 refs
-  python3 route_v3.py std_vias          drop the 0.2 mm-hole vias (JLC standard via tier)
+  python3 route_v3.py vias              standard 0.3 mm vias only (JLC fee below that), refill
 
 Run with KiCad 10 python; edits ../proves_radio_stick_V3.kicad_pcb in place.
 """
@@ -83,7 +83,7 @@ PLANE_TIES = [('U1', n) for n in ('6', '10', '11', '19', '20', '21', '22', '27',
     [(c, p) for c in ['C%d' % i for i in range(101, 119) if i != 113] for p in ('1', '2')] + \
     [('C113', '2'), ('U4', '2')]
 
-SOLID_GND = [('U4', '2'), ('U1', '99'), ('U1', '49'), ('U1', '74'), ('U1', '10'), ('U1', '27'), ('C102', '2')]
+SOLID_GND = [('U4', '2'), ('U1', '99'), ('U1', '49'), ('U1', '74'), ('U1', '10'), ('U1', '27')]
 
 def pad_end(b, ref, num):
     f = next(f for f in b.GetFootprints() if f.GetReference() == ref)
@@ -318,22 +318,29 @@ def drop_dead_ends(b):
                 b.Delete(t)
             at = pcbnew.VECTOR2I(*far.pop())
 
-# Small GND vias that fit inside via-less pour patches (EE review r2): U4.2, and U1.27 + C102.2.
-SMALL_GND_VIAS = [(234.65, 99.07), (217.48, 108.80)]
+# Every via is a standard 0.3 mm hole: JLC's 0.2 mm tier adds TG155 and a 4-wire Kelvin test
+# ($37.62 on the 2026-10-31 5-board quote). Layout r2's 0.2 mm GND vias in the U4.2 and U1.27/C102.2
+# pour slivers are replaced: U4.2 gets a 0.56/0.3 via 0.6 mm above the pad on a 0.25 mm stub; the
+# U1.27/C102.2 corner has no room for one and keeps its 3.9 mm track to the GND via at (213.30, 108.72),
+# with C102.2 back on a thermal so both 0402 pads heat alike (r2 N4 tombstone note).
+MIN_DRILL = 0.3
+U4_GND_VIA = (233.3, 97.26)
 
-def small_gnd_vias(b):
-    gnd = b.FindNet('GND')
-    for x, y in SMALL_GND_VIAS:
-        if any(t.Type() == pcbnew.PCB_VIA_T and (t.GetPosition() - P(x, y)).EuclideanNorm() < 0.1 * MM
-               for t in b.GetTracks()):
-            continue
+def standard_vias(b):
+    """Idempotent."""
+    for t in list(b.GetTracks()):
+        if t.Type() == pcbnew.PCB_VIA_T and t.GetDrillValue() < MIN_DRILL * MM - 1000:
+            print('drop small via', t.GetNetname(), t.GetPosition().x / MM, t.GetPosition().y / MM)
+            b.Delete(t)
+    pad_end(b, 'C102', '2')[4].SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_INHERITED)
+    if not any(t.Type() == pcbnew.PCB_VIA_T and t.GetPosition() == P(*U4_GND_VIA) for t in b.GetTracks()):
         v = pcbnew.PCB_VIA(b)
-        v.SetPosition(P(x, y))
-        v.SetWidth(int(0.46 * MM))    # 0.13 mm annular, the project minimum
-        v.SetDrill(int(0.2 * MM))
-        v.SetNet(gnd)
-        v.SetLocked(True)
+        v.SetPosition(P(*U4_GND_VIA))
+        v.SetWidth(int(0.56 * MM))
+        v.SetDrill(int(MIN_DRILL * MM))
+        v.SetNet(b.FindNet('GND'))
         b.Add(v)
+        add_track(b, 'GND', pcbnew.F_Cu, 0.25, [(233.3, 97.862), U4_GND_VIA])
 
 HOLE2HOLE = 0.5    # JLC: 0.5 mm between hole walls
 
@@ -459,22 +466,6 @@ def readable_silk(b):
         r.SetTextAngleDegrees(angle)
         r.SetTextSize(pcbnew.VECTOR2I(int(0.8 * MM), int(0.8 * MM)))
 
-def std_vias(b):
-    """No 0.2 mm holes: JLC's 0.2 mm via tier adds TG155 and a 4-wire Kelvin test (~$34 per 5 boards). Idempotent.
-    U4.2 gets a 0.56/0.3 via 0.6 mm above the pad on a 0.25 mm stub; the U1.27/C102.2 sliver has no room
-    for one and keeps its 3.9 mm track to the GND via at (213.30, 108.72)."""
-    for v in [t for t in b.GetTracks() if t.GetClass() == 'PCB_VIA' and t.GetDrill() < int(0.25 * MM)]:
-        b.Delete(v)
-    gnd = b.FindNet('GND')
-    if not any(t.GetClass() == 'PCB_VIA' and t.GetPosition() == P(233.3, 97.26) for t in b.GetTracks()):
-        v = pcbnew.PCB_VIA(b)
-        v.SetPosition(P(233.3, 97.26))
-        v.SetWidth(int(0.56 * MM))
-        v.SetDrill(int(0.3 * MM))
-        v.SetNet(gnd)
-        b.Add(v)
-        add_track(b, 'GND', pcbnew.F_Cu, 0.25, [(233.3, 97.862), (233.3, 97.26)])
-    pcbnew.ZONE_FILLER(b).Fill(b.Zones())
 
 def fields(b, net_xml):
     """Copy Value and MPN from the exported schematic netlist onto the footprints."""
@@ -499,7 +490,7 @@ def stackup_text(path):
 def finish(b):
     silk(b)
     drop_dead_ends(b)
-    small_gnd_vias(b)
+    standard_vias(b)
     drop_dangling_vias(b)
     spread_vias(b)
     for net, layer, width, pts in HAND:
@@ -513,7 +504,8 @@ if __name__ == '__main__':
     cmd, args = sys.argv[1], sys.argv[2:]
     b = pcbnew.LoadBoard(PCB)
     {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'silk': silk, 'skill': lambda b, net_xml: (skill_silk(b), fields(b, net_xml)),
-     'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock, 'readable': readable_silk, 'std_vias': std_vias}[cmd](b, *args)
+     'touchup': lambda b: (silk(b), drop_dead_ends(b), standard_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock, 'readable': readable_silk,
+     'vias': lambda b: (standard_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones()))}[cmd](b, *args)
     if cmd != 'dsn':
         pcbnew.SaveBoard(PCB, b)
     if cmd == 'skill':
