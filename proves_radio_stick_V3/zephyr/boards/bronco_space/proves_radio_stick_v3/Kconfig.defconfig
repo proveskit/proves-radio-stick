@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_PROVES_RADIO_STICK_V3
+
+config SPI_STM32_INTERRUPT
+	default y
+	depends on SPI
+
+# Console and shell on USB CDC-ACM, so the stick works without a probe.
+source "$(ZEPHYR_BASE)/boards/common/usb/Kconfig.cdc_acm_serial.defconfig"
+
+endif # BOARD_PROVES_RADIO_STICK_V3
