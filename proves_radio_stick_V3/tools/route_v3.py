@@ -8,6 +8,7 @@
   python3 route_v3.py ses <in.ses>      import the routed session and refill zones
   python3 route_v3.py finish            hand tracks, GND stitching vias, refill
   python3 route_v3.py readable          front silk names: ANT, USB, SWD; move the J12 and J3 refs
+  python3 route_v3.py std_vias          drop the 0.2 mm-hole vias (JLC standard via tier)
 
 Run with KiCad 10 python; edits ../proves_radio_stick_V3.kicad_pcb in place.
 """
@@ -458,6 +459,23 @@ def readable_silk(b):
         r.SetTextAngleDegrees(angle)
         r.SetTextSize(pcbnew.VECTOR2I(int(0.8 * MM), int(0.8 * MM)))
 
+def std_vias(b):
+    """No 0.2 mm holes: JLC's 0.2 mm via tier adds TG155 and a 4-wire Kelvin test (~$34 per 5 boards). Idempotent.
+    U4.2 gets a 0.56/0.3 via 0.6 mm above the pad on a 0.25 mm stub; the U1.27/C102.2 sliver has no room
+    for one and keeps its 3.9 mm track to the GND via at (213.30, 108.72)."""
+    for v in [t for t in b.GetTracks() if t.GetClass() == 'PCB_VIA' and t.GetDrill() < int(0.25 * MM)]:
+        b.Delete(v)
+    gnd = b.FindNet('GND')
+    if not any(t.GetClass() == 'PCB_VIA' and t.GetPosition() == P(233.3, 97.26) for t in b.GetTracks()):
+        v = pcbnew.PCB_VIA(b)
+        v.SetPosition(P(233.3, 97.26))
+        v.SetWidth(int(0.56 * MM))
+        v.SetDrill(int(0.3 * MM))
+        v.SetNet(gnd)
+        b.Add(v)
+        add_track(b, 'GND', pcbnew.F_Cu, 0.25, [(233.3, 97.862), (233.3, 97.26)])
+    pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+
 def fields(b, net_xml):
     """Copy Value and MPN from the exported schematic netlist onto the footprints."""
     import xml.etree.ElementTree as ET
@@ -495,7 +513,7 @@ if __name__ == '__main__':
     cmd, args = sys.argv[1], sys.argv[2:]
     b = pcbnew.LoadBoard(PCB)
     {'prep': prep, 'dsn': dsn, 'ses': ses, 'finish': finish, 'silk': silk, 'skill': lambda b, net_xml: (skill_silk(b), fields(b, net_xml)),
-     'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock, 'readable': readable_silk}[cmd](b, *args)
+     'touchup': lambda b: (silk(b), drop_dead_ends(b), small_gnd_vias(b), pcbnew.ZONE_FILLER(b).Fill(b.Zones())), 'fixups': fixups, 'relock': relock, 'readable': readable_silk, 'std_vias': std_vias}[cmd](b, *args)
     if cmd != 'dsn':
         pcbnew.SaveBoard(PCB, b)
     if cmd == 'skill':

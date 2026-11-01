@@ -9,7 +9,7 @@ Same layout as V2's files. CPL rotations get JLC's per-package offsets: taken fr
 CPL where V2 used the same footprint, otherwise from ROTATION_OFFSET below. Check the
 rotations in JLC's placement preview before ordering either way.
 """
-import csv, io, os, re, subprocess, zipfile
+import csv, io, math, os, re, subprocess, zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PRJ = os.path.join(HERE, '..')
@@ -29,6 +29,23 @@ ROTATION_OFFSET = [
     (r'^SOT-23', 180),
     (r'^Crystal_SMD_', 0),
 ]
+
+# Footprints whose KiCad origin is pin 1, not the body centre JLC places by: offset to the
+# pad centre in the footprint's own frame (x right, y down, before rotation).
+CENTRE_OFFSET = [
+    (r'^TerminalBlock_Phoenix_MPT-0,5-10-2.54_', (11.43, 0.0)),
+    (r'^PinHeader_2x07_P1.27mm_', (0.635, 3.81)),
+]
+
+def centre(r):
+    """CPL Mid X/Y: KiCad's position plus CENTRE_OFFSET rotated with the footprint (pos files are y-up)."""
+    x, y = float(r['PosX']), float(r['PosY'])
+    off = next((o for pat, o in CENTRE_OFFSET if re.match(pat, r['Package'])), None)
+    if off is None:
+        return x, y
+    dx, dy = off[0] * (-1 if r['Side'] == 'bottom' else 1), off[1]
+    a = math.radians(float(r['Rot']))
+    return x + dx * math.cos(a) + dy * math.sin(a), y - (-dx * math.sin(a) + dy * math.cos(a))
 
 def run(*args):
     subprocess.run(args, check=True, stdout=subprocess.DEVNULL)
@@ -96,7 +113,8 @@ def cpl(bom_rows):
             if off is None:
                 unknown.add(pkg)
                 off = 0
-            w.writerow([r['Ref'], r['Val'], pkg, '%.6f' % float(r['PosX']), '%.6f' % float(r['PosY']),
+            x, y = centre(r)
+            w.writerow([r['Ref'], r['Val'], pkg, '%.6f' % x, '%.6f' % y,
                         '%.6f' % ((float(r['Rot']) + off) % 360), r['Side']])
     return unknown
 
