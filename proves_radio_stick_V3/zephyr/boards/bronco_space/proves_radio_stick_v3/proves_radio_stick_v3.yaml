@@ -1,0 +1,19 @@
+identifier: proves_radio_stick_v3
+name: PROVES Radio Stick V3
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+ram: 768
+flash: 2048
+supported:
+  - adc
+  - dac
+  - gpio
+  - i2c
+  - lora
+  - rtc
+  - spi
+  - usbd
+  - watchdog
+vendor: bronco_space
